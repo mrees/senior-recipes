@@ -2,569 +2,638 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Home — Seniors Recipes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seniors Recipes – Simple, Healthy Meals for One</title>
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --font: 'Segoe UI', Arial, sans-serif;
-  --text: #2C3E50;
-  --muted: #7F8C8D;
-  --border: #E8EAED;
-  --radius: 12px;
-  --shadow: 0 2px 12px rgba(0,0,0,.08);
+  --cream:#faf8f4; --green:#4a7c59; --warm:#c8a96e; --text:#2c2c2c;
+  --card:#ffffff; --border:#e8e0d0; --light-green:#e8f0eb;
 }
-body { font-family: var(--font); color: var(--text); background: #FAFAFA; min-height: 100vh; }
-a { color: inherit; text-decoration: none; }
-header {
-  background: #2C3E50;
-  color: white;
-  padding: 28px 32px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-header .logo { font-size: 2rem; }
-header h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: -.5px; }
-header p { font-size: .9rem; opacity: .75; margin-top: 2px; }
-nav.breadcrumb {
-  background: white;
-  border-bottom: 1px solid var(--border);
-  padding: 12px 32px;
-  font-size: .85rem;
-  color: var(--muted);
-}
-nav.breadcrumb a { color: #2874A6; }
-nav.breadcrumb a:hover { text-decoration: underline; }
-.container { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
-/* index */
-.cat-section { margin-bottom: 48px; }
-.cat-title {
-  font-size: 1.25rem; font-weight: 700;
-  margin-bottom: 18px;
-  padding: 10px 18px;
-  border-radius: var(--radius);
-  display: flex; align-items: center; gap: 10px;
-}
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 18px;
-}
-.card {
-  background: white;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-  transition: transform .18s, box-shadow .18s;
-  cursor: pointer;
-}
-.card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.13); }
-.card img { width: 100%; height: 150px; object-fit: cover; display: block; }
-.card-body { padding: 14px 16px 16px; }
-.card-body h3 { font-size: .95rem; font-weight: 700; margin-bottom: 6px; line-height: 1.3; }
-.card-body p { font-size: .8rem; color: var(--muted); line-height: 1.45; }
-.badge {
-  display: inline-block;
-  font-size: .7rem; font-weight: 700;
-  padding: 3px 9px;
-  border-radius: 20px;
-  margin-bottom: 8px;
-  color: white;
-}
-/* recipe page */
-.recipe-hero { position: relative; border-radius: var(--radius); overflow: hidden; margin-bottom: 32px; box-shadow: var(--shadow); }
-.recipe-hero img { width: 100%; max-height: 380px; object-fit: cover; display: block; }
-.recipe-hero .overlay {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 24px 28px;
-  background: linear-gradient(transparent, rgba(0,0,0,.65));
-  color: white;
-}
-.recipe-hero .overlay h1 { font-size: 1.8rem; font-weight: 800; }
-.recipe-hero .overlay .cat { font-size: .85rem; opacity: .85; margin-top: 4px; }
-.recipe-meta {
-  display: flex; gap: 24px; flex-wrap: wrap;
-  margin-bottom: 32px;
-}
-.meta-box {
-  background: white;
-  border-radius: var(--radius);
-  padding: 16px 22px;
-  box-shadow: var(--shadow);
-  flex: 1;
-  min-width: 120px;
-  text-align: center;
-}
-.meta-box .num { font-size: 1.5rem; font-weight: 800; }
-.meta-box .lbl { font-size: .75rem; color: var(--muted); margin-top: 2px; text-transform: uppercase; letter-spacing: .5px; }
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
-@media (max-width: 650px) { .two-col { grid-template-columns: 1fr; } .recipe-meta { gap: 12px; } }
-.section-card {
-  background: white;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 24px;
-}
-.section-card h2 {
-  font-size: 1.1rem; font-weight: 700;
-  margin-bottom: 16px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid var(--border);
-  display: flex; align-items: center; gap: 8px;
-}
-.section-card ul, .section-card ol { padding-left: 22px; }
-.section-card li { margin-bottom: 8px; font-size: .92rem; line-height: 1.55; }
-.section-card ol li { padding-left: 4px; }
-.nutrient-grid {
-  display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px;
-  margin-bottom: 32px;
-}
-@media (max-width: 600px) { .nutrient-grid { grid-template-columns: repeat(3, 1fr); } }
-.nut-box {
-  background: white;
-  border-radius: var(--radius);
-  padding: 16px 12px;
-  text-align: center;
-  box-shadow: var(--shadow);
-}
-.nut-box .val { font-size: 1.4rem; font-weight: 800; }
-.nut-box .unit { font-size: .7rem; color: var(--muted); }
-.nut-box .name { font-size: .72rem; color: var(--muted); margin-top: 3px; text-transform: uppercase; letter-spacing: .4px; }
-.back-link {
-  display: inline-flex; align-items: center; gap: 6px;
-  color: #2874A6; font-size: .9rem; font-weight: 600;
-  margin-bottom: 24px;
-}
-.back-link:hover { text-decoration: underline; }
-footer {
-  background: #2C3E50; color: rgba(255,255,255,.6);
-  text-align: center; padding: 20px;
-  font-size: .8rem; margin-top: 60px;
-}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:Georgia,serif; background:var(--cream); color:var(--text); }
+
+header { background:var(--green); color:#fff; padding:32px 24px 28px; text-align:center; }
+header h1 { font-size:2.2em; margin-bottom:6px; }
+header p { opacity:0.85; font-size:1.05em; font-family:Arial,sans-serif; }
+
+.search-bar { background:#fff; border-bottom:2px solid var(--border); padding:18px 24px; position:sticky; top:0; z-index:100; display:flex; justify-content:center; }
+.search-bar input { width:100%; max-width:560px; padding:12px 18px; font-size:1em; border:2px solid var(--border); border-radius:30px; font-family:Arial,sans-serif; outline:none; background:var(--cream); transition:border-color .2s; }
+.search-bar input:focus { border-color:var(--green); }
+
+.container { max-width:1100px; margin:0 auto; padding:32px 20px 60px; }
+
+.cat-section { margin-bottom:48px; }
+.cat-heading { font-size:1.5em; color:var(--green); margin-bottom:16px; padding-bottom:8px; border-bottom:2px solid var(--border); }
+
+.card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:14px; }
+
+.card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px 16px; text-decoration:none; color:var(--text); display:block; transition:transform .15s, box-shadow .15s; }
+.card:hover { transform:translateY(-3px); box-shadow:0 6px 20px rgba(0,0,0,0.1); }
+.card-emoji { font-size:1.8em; margin-bottom:8px; }
+.card-title { font-size:0.95em; font-weight:bold; margin-bottom:4px; line-height:1.4; }
+.card-cat { font-size:0.75em; color:var(--warm); font-family:Arial,sans-serif; text-transform:uppercase; letter-spacing:0.5px; }
+
+.no-results { text-align:center; padding:60px 20px; color:#888; font-family:Arial,sans-serif; font-size:1.1em; display:none; }
+
+footer { background:var(--green); color:#fff; text-align:center; padding:20px; font-family:Arial,sans-serif; font-size:0.85em; opacity:0.9; }
 </style>
 </head>
 <body>
 <header>
-  <span class="logo">🍽️</span>
-  <div>
-    <h1>Seniors Recipes</h1>
-    <p>Simple · Healthy · One-person meals for ages 75+</p>
-  </div>
-</header><nav class="breadcrumb">🏠 Home</nav>
-<div class="container">
-<p style="font-size:.95rem;color:#555;margin-bottom:32px;">A collection of <strong>48 recipes</strong> organised into 5 categories. Each recipe includes metric ingredients, step-by-step instructions, and nutrient estimates.</p>
-<section class="cat-section">
-<div class="cat-title" style="background:#FFF4EC;color:#E67E22"><span>🍳</span><span>One-Pan Dinners</span><span style="margin-left:auto;font-size:.8rem;color:#E67E2280">10 recipes</span></div>
-<div class="card-grid">
-<a href="recipes/chicken-veggie-tray-bake.html" class="card">
-  <img src="images/chicken-veggie-tray-bake.jpg" alt="Chicken & Veggie Tray Bake" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#F39C12">One-Pan Dinners</span>
-    <h3>Chicken & Veggie Tray Bake</h3>
-    <p>Chicken thighs, vegetables, and potatoes roasted on one sheet pan, perfumed with…</p>
-  </div>
-</a>
-<a href="recipes/salmon-honey-garlic-broccoli.html" class="card">
-  <img src="images/salmon-honey-garlic-broccoli.jpg" alt="Salmon with Honey Garlic Broccoli" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#F39C12">One-Pan Dinners</span>
-    <h3>Salmon with Honey Garlic Broccoli</h3>
-    <p>Salmon fillet and broccoli roasted together with a quick glaze of honey, garlic …</p>
-  </div>
-</a>
-<a href="recipes/sheetpan-sausage-cabbage-apples.html" class="card">
-  <img src="images/sheetpan-sausage-cabbage-apples.jpg" alt="Sheetpan Sausage, Cabbage & Apples" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#F39C12">One-Pan Dinners</span>
-    <h3>Sheetpan Sausage, Cabbage & Apples</h3>
-    <p>Smoked sausage roasted alongside sweet apples and cabbage, finished with a drizz…</p>
-  </div>
-</a>
-<a href="recipes/lemon-herb-tilapia-green-beans.html" class="card">
-  <img src="images/lemon-herb-tilapia-green-beans.jpg" alt="Lemon Herb Tilapia with Green Beans" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#F39C12">One-Pan Dinners</span>
-    <h3>Lemon Herb Tilapia with Green Beans</h3>
-    <p>Tilapia and green beans baked with lemon butter, herbs, and optional cherry toma…</p>
-  </div>
-</a>
-<a href="recipes/ground-turkey-cabbage-roll.html" class="card">
-  <img src="images/ground-turkey-cabbage-roll.jpg" alt="One-Pan Ground Turkey Cabbage Roll" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#F39C12">One-Pan Dinners</span>
-    <h3>One-Pan Ground Turkey Cabbage Roll</h3>
-    <p>A skillet meal capturing cabbage roll flavours with ground turkey, rice and toma…</p>
-  </div>
-</a>
-<a href="recipes/shrimp-veggie-stir-fry.html" class="card">
-  <img src="images/shrimp-veggie-stir-fry.jpg" alt="One-Pan Shrimp & Veggie Stir-Fry" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#F39C12">One-Pan Dinners</span>
-    <h3>One-Pan Shrimp & Veggie Stir-Fry</h3>
-    <p>Quick-cooking shrimp and mixed vegetables tossed in soy and garlic, served over …</p>
-  </div>
-</a>
-<a href="recipes/sweet-potato-black-bean-bowl.html" class="card">
-  <img src="images/sweet-potato-black-bean-bowl.jpg" alt="Sweet Potato & Black Bean Fiesta Bowl" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#F39C12">One-Pan Dinners</span>
-    <h3>Sweet Potato & Black Bean Fiesta Bowl</h3>
-    <p>Roasted sweet potatoes, black beans, corn and onion seasoned with cumin and chil…</p>
-  </div>
-</a>
-<a href="recipes/pasta-primavera.html" class="card">
-  <img src="images/pasta-primavera.jpg" alt="One-Pan Pasta Primavera" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#F39C12">One-Pan Dinners</span>
-    <h3>One-Pan Pasta Primavera</h3>
-    <p>Dry pasta, cherry tomatoes, mushrooms, onions, and spinach simmered in one skill…</p>
-  </div>
-</a>
-<a href="recipes/mediterranean-chicken-olives.html" class="card">
-  <img src="images/mediterranean-chicken-olives.jpg" alt="Mediterranean Chicken with Olives & Tomatoes" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#F39C12">One-Pan Dinners</span>
-    <h3>Mediterranean Chicken with Olives & Tomatoes</h3>
-    <p>Chicken thighs baked with cherry tomatoes, olives, garlic and olive oil for a na…</p>
-  </div>
-</a>
-<a href="recipes/baked-egg-frittata.html" class="card">
-  <img src="images/baked-egg-frittata.jpg" alt="One-Pan Baked Egg Frittata" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#F39C12">One-Pan Dinners</span>
-    <h3>One-Pan Baked Egg Frittata</h3>
-    <p>A fluffy baked frittata made by pouring whisked eggs over spinach, tomatoes and …</p>
-  </div>
-</a>
+  <h1>🥗 Seniors Recipes</h1>
+  <p>Simple, healthy one-person meals · High protein · High fibre · Easy to prepare</p>
+</header>
+<div class="search-bar">
+  <input type="search" id="search" placeholder="Search recipes… (e.g. egg, salmon, tofu, no-cook)" autocomplete="off">
 </div>
+<div class="container" id="main-container">
+  <section class="cat-section" data-cat="no-cook plates">
+  <h2 class="cat-heading">🥗 No-Cook Plates</h2>
+  <div class="card-grid"><a class="card" href="recipes/artful-protein-power-plate.html" data-title="the protein power plate" data-cat="no-cook plates">
+  <div class="card-emoji">🥗</div>
+  <div class="card-title">The Protein Power Plate</div>
+  <div class="card-cat">No-Cook Plates</div>
+</a>
+<a class="card" href="recipes/artful-sweet-savory-balance.html" data-title="the sweet & savory balance" data-cat="no-cook plates">
+  <div class="card-emoji">🥗</div>
+  <div class="card-title">The Sweet & Savory Balance</div>
+  <div class="card-cat">No-Cook Plates</div>
+</a>
+<a class="card" href="recipes/artful-no-cook-chicken.html" data-title="the no-cook chicken plate" data-cat="no-cook plates">
+  <div class="card-emoji">🥗</div>
+  <div class="card-title">The No-Cook Chicken Plate</div>
+  <div class="card-cat">No-Cook Plates</div>
+</a>
+<a class="card" href="recipes/artful-tuna-without-fuss.html" data-title="tuna without the fuss" data-cat="no-cook plates">
+  <div class="card-emoji">🥗</div>
+  <div class="card-title">Tuna Without the Fuss</div>
+  <div class="card-cat">No-Cook Plates</div>
+</a>
+<a class="card" href="recipes/artful-cheese-fiber-combo.html" data-title="the cheese & fibre combo" data-cat="no-cook plates">
+  <div class="card-emoji">🥗</div>
+  <div class="card-title">The Cheese & Fibre Combo</div>
+  <div class="card-cat">No-Cook Plates</div>
+</a>
+<a class="card" href="recipes/artful-peanut-butter-comfort.html" data-title="the peanut butter comfort plate" data-cat="no-cook plates">
+  <div class="card-emoji">🥗</div>
+  <div class="card-title">The Peanut Butter Comfort Plate</div>
+  <div class="card-cat">No-Cook Plates</div>
+</a>
+<a class="card" href="recipes/artful-cottage-cheese-comeback.html" data-title="the cottage cheese comeback" data-cat="no-cook plates">
+  <div class="card-emoji">🥗</div>
+  <div class="card-title">The Cottage Cheese Comeback</div>
+  <div class="card-cat">No-Cook Plates</div>
+</a>
+<a class="card" href="recipes/artful-smoked-salmon-light.html" data-title="the smoked salmon light plate" data-cat="no-cook plates">
+  <div class="card-emoji">🥗</div>
+  <div class="card-title">The Smoked Salmon Light Plate</div>
+  <div class="card-cat">No-Cook Plates</div>
+</a>
+<a class="card" href="recipes/artful-bean-crunch-plate.html" data-title="the bean & crunch plate" data-cat="no-cook plates">
+  <div class="card-emoji">🥗</div>
+  <div class="card-title">The Bean & Crunch Plate</div>
+  <div class="card-cat">No-Cook Plates</div>
+</a>
+<a class="card" href="recipes/artful-turkey-roll-ups.html" data-title="the turkey roll-ups" data-cat="no-cook plates">
+  <div class="card-emoji">🥗</div>
+  <div class="card-title">The Turkey Roll-Ups</div>
+  <div class="card-cat">No-Cook Plates</div>
+</a>
+<a class="card" href="recipes/artful-avocado-egg-upgrade.html" data-title="the avocado & egg upgrade" data-cat="no-cook plates">
+  <div class="card-emoji">🥗</div>
+  <div class="card-title">The Avocado & Egg Upgrade</div>
+  <div class="card-cat">No-Cook Plates</div>
+</a>
+<a class="card" href="recipes/artful-no-decision-snack.html" data-title="the no decision snack plate" data-cat="no-cook plates">
+  <div class="card-emoji">🥗</div>
+  <div class="card-title">The No Decision Snack Plate</div>
+  <div class="card-cat">No-Cook Plates</div>
+</a></div>
 </section>
-<section class="cat-section">
-<div class="cat-title" style="background:#F0FBF4;color:#27AE60"><span>💪</span><span>Minimal Cooking High-Protein & High-Fibre</span><span style="margin-left:auto;font-size:.8rem;color:#27AE6080">12 recipes</span></div>
-<div class="card-grid">
-<a href="recipes/egg-spinach-white-bean-skillet.html" class="card">
-  <img src="images/egg-spinach-white-bean-skillet.jpg" alt="Warm Egg, Spinach & White Bean Skillet" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#1E8449">Minimal Cooking Hi</span>
-    <h3>Warm Egg, Spinach & White Bean Skillet</h3>
-    <p>Soft white beans and fresh spinach heated in a skillet, topped with a cooked egg…</p>
-  </div>
+<section class="cat-section" data-cat="5-minute meals">
+  <h2 class="cat-heading">🍳 5-Minute Meals</h2>
+  <div class="card-grid"><a class="card" href="recipes/cozy-egg-spinach-bean-skillet.html" data-title="warm egg, spinach & white bean skillet" data-cat="5-minute meals">
+  <div class="card-emoji">🍳</div>
+  <div class="card-title">Warm Egg, Spinach & White Bean Skillet</div>
+  <div class="card-cat">5-Minute Meals</div>
 </a>
-<a href="recipes/peanut-butter-banana-oatmeal.html" class="card">
-  <img src="images/peanut-butter-banana-oatmeal.jpg" alt="Warm Peanut Butter Banana Oatmeal" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#1E8449">Minimal Cooking Hi</span>
-    <h3>Warm Peanut Butter Banana Oatmeal</h3>
-    <p>Rolled oats cooked in milk, enriched with peanut butter, sliced banana and cinna…</p>
-  </div>
+<a class="card" href="recipes/cozy-pb-banana-oatmeal.html" data-title="warm pb banana oatmeal" data-cat="5-minute meals">
+  <div class="card-emoji">🍳</div>
+  <div class="card-title">Warm PB Banana Oatmeal</div>
+  <div class="card-cat">5-Minute Meals</div>
 </a>
-<a href="recipes/tuna-chickpea-warm-skillet.html" class="card">
-  <img src="images/tuna-chickpea-warm-skillet.jpg" alt="Tuna & Chickpea Warm Skillet" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#1E8449">Minimal Cooking Hi</span>
-    <h3>Tuna & Chickpea Warm Skillet</h3>
-    <p>Canned chickpeas and diced onions warmed in a pan, gently tossed with canned tun…</p>
-  </div>
+<a class="card" href="recipes/cozy-tuna-chickpea-skillet.html" data-title="tuna & chickpea warm skillet" data-cat="5-minute meals">
+  <div class="card-emoji">🍳</div>
+  <div class="card-title">Tuna & Chickpea Warm Skillet</div>
+  <div class="card-cat">5-Minute Meals</div>
 </a>
-<a href="recipes/warm-lentil-tomato-bowl.html" class="card">
-  <img src="images/warm-lentil-tomato-bowl.jpg" alt="Warm Lentil & Tomato Comfort Bowl" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#1E8449">Minimal Cooking Hi</span>
-    <h3>Warm Lentil & Tomato Comfort Bowl</h3>
-    <p>Canned lentils warmed with diced tomatoes, olive oil and garlic powder for a qui…</p>
-  </div>
+<a class="card" href="recipes/cozy-lentil-tomato-bowl.html" data-title="warm lentil & tomato comfort bowl" data-cat="5-minute meals">
+  <div class="card-emoji">🍳</div>
+  <div class="card-title">Warm Lentil & Tomato Comfort Bowl</div>
+  <div class="card-cat">5-Minute Meals</div>
 </a>
-<a href="recipes/cottage-cheese-apple-skillet.html" class="card">
-  <img src="images/cottage-cheese-apple-skillet.jpg" alt="Cottage Cheese & Warm Apple Skillet" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#1E8449">Minimal Cooking Hi</span>
-    <h3>Cottage Cheese & Warm Apple Skillet</h3>
-    <p>Apples sautéed in butter with cinnamon, served over a bowl of cottage cheese and…</p>
-  </div>
+<a class="card" href="recipes/cozy-cottage-apple-skillet.html" data-title="cottage cheese & warm apple skillet" data-cat="5-minute meals">
+  <div class="card-emoji">🍳</div>
+  <div class="card-title">Cottage Cheese & Warm Apple Skillet</div>
+  <div class="card-cat">5-Minute Meals</div>
 </a>
-<a href="recipes/sardine-avocado-toast.html" class="card">
-  <img src="images/sardine-avocado-toast.jpg" alt="Simple Sardine & Avocado Toast" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#1E8449">Minimal Cooking Hi</span>
-    <h3>Simple Sardine & Avocado Toast</h3>
-    <p>Mashed avocado spread on whole-grain toast, topped with canned sardines and a sq…</p>
-  </div>
+<a class="card" href="recipes/cozy-sardine-avocado-toast.html" data-title="simple sardine & avocado toast" data-cat="5-minute meals">
+  <div class="card-emoji">🍳</div>
+  <div class="card-title">Simple Sardine & Avocado Toast</div>
+  <div class="card-cat">5-Minute Meals</div>
 </a>
-<a href="recipes/chicken-bean-warm-wrap.html" class="card">
-  <img src="images/chicken-bean-warm-wrap.jpg" alt="Chicken & Bean Warm Wrap" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#1E8449">Minimal Cooking Hi</span>
-    <h3>Chicken & Bean Warm Wrap</h3>
-    <p>Black beans, cooked chicken and salsa warmed in a skillet and rolled into a whol…</p>
-  </div>
+<a class="card" href="recipes/cozy-chicken-bean-wrap.html" data-title="chicken & bean warm wrap" data-cat="5-minute meals">
+  <div class="card-emoji">🍳</div>
+  <div class="card-title">Chicken & Bean Warm Wrap</div>
+  <div class="card-cat">5-Minute Meals</div>
 </a>
-<a href="recipes/quinoa-egg-breakfast-bowl.html" class="card">
-  <img src="images/quinoa-egg-breakfast-bowl.jpg" alt="Quinoa Egg Breakfast Bowl" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#1E8449">Minimal Cooking Hi</span>
-    <h3>Quinoa Egg Breakfast Bowl</h3>
-    <p>Warmed leftover quinoa topped with a cooked egg and a sprinkle of pumpkin seeds.</p>
-  </div>
+<a class="card" href="recipes/cozy-quinoa-egg-bowl.html" data-title="quinoa egg breakfast bowl" data-cat="5-minute meals">
+  <div class="card-emoji">🍳</div>
+  <div class="card-title">Quinoa Egg Breakfast Bowl</div>
+  <div class="card-cat">5-Minute Meals</div>
 </a>
-<a href="recipes/warm-greek-yogurt-berry-oats.html" class="card">
-  <img src="images/warm-greek-yogurt-berry-oats.jpg" alt="Warm Greek Yoghurt Berry Oats" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#1E8449">Minimal Cooking Hi</span>
-    <h3>Warm Greek Yoghurt Berry Oats</h3>
-    <p>Oats and frozen berries cooked in water, folded through Greek yoghurt for a prot…</p>
-  </div>
+<a class="card" href="recipes/cozy-greek-yogurt-berry-oats.html" data-title="warm greek yogurt berry oats" data-cat="5-minute meals">
+  <div class="card-emoji">🍳</div>
+  <div class="card-title">Warm Greek Yogurt Berry Oats</div>
+  <div class="card-cat">5-Minute Meals</div>
 </a>
-<a href="recipes/smoked-salmon-scrambled-eggs.html" class="card">
-  <img src="images/smoked-salmon-scrambled-eggs.jpg" alt="Smoked Salmon Scrambled Eggs" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#1E8449">Minimal Cooking Hi</span>
-    <h3>Smoked Salmon Scrambled Eggs</h3>
-    <p>Creamy scrambled eggs topped with smoked salmon and capers on whole-grain toast.</p>
-  </div>
+<a class="card" href="recipes/cozy-turkey-white-bean-skillet.html" data-title="turkey & white bean skillet" data-cat="5-minute meals">
+  <div class="card-emoji">🍳</div>
+  <div class="card-title">Turkey & White Bean Skillet</div>
+  <div class="card-cat">5-Minute Meals</div>
 </a>
-<a href="recipes/edamame-tofu-brown-rice.html" class="card">
-  <img src="images/edamame-tofu-brown-rice.jpg" alt="Edamame, Tofu & Brown Rice Bowl" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#1E8449">Minimal Cooking Hi</span>
-    <h3>Edamame, Tofu & Brown Rice Bowl</h3>
-    <p>Firm tofu cubes and shelled edamame served over brown rice with a soy-ginger dri…</p>
-  </div>
-</a>
-<a href="recipes/lentil-egg-shakshuka.html" class="card">
-  <img src="images/lentil-egg-shakshuka.jpg" alt="Quick Lentil & Egg Shakshuka" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#1E8449">Minimal Cooking Hi</span>
-    <h3>Quick Lentil & Egg Shakshuka</h3>
-    <p>Spiced tomato-lentil sauce with eggs poached directly in the pan.</p>
-  </div>
-</a>
-</div>
+<a class="card" href="recipes/cozy-hummus-chickpea-toast.html" data-title="hummus & warm chickpea toast" data-cat="5-minute meals">
+  <div class="card-emoji">🍳</div>
+  <div class="card-title">Hummus & Warm Chickpea Toast</div>
+  <div class="card-cat">5-Minute Meals</div>
+</a></div>
 </section>
-<section class="cat-section">
-<div class="cat-title" style="background:#FDF3FF;color:#8E44AD"><span>🌿</span><span>Simple Tofu Recipes</span><span style="margin-left:auto;font-size:.8rem;color:#8E44AD80">10 recipes</span></div>
-<div class="card-grid">
-<a href="recipes/garlic-soy-tofu-bowl.html" class="card">
-  <img src="images/garlic-soy-tofu-bowl.jpg" alt="Garlic Soy Tofu Bowl" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#9B59B6">Simple Tofu Recipe</span>
-    <h3>Garlic Soy Tofu Bowl</h3>
-    <p>Tofu cubes gently warmed in a pan with olive oil, minced garlic and soy sauce.</p>
-  </div>
+<section class="cat-section" data-cat="gentle morning bites">
+  <h2 class="cat-heading">🌅 Gentle Morning Bites</h2>
+  <div class="card-grid"><a class="card" href="recipes/gmb-fortified-smoothie.html" data-title="the fortified smoothie" data-cat="gentle morning bites">
+  <div class="card-emoji">🌅</div>
+  <div class="card-title">The Fortified Smoothie</div>
+  <div class="card-cat">Gentle Morning Bites</div>
 </a>
-<a href="recipes/savory-tofu-scramble.html" class="card">
-  <img src="images/savory-tofu-scramble.jpg" alt="Savoury Tofu Scramble" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#9B59B6">Simple Tofu Recipe</span>
-    <h3>Savoury Tofu Scramble</h3>
-    <p>Crumbled firm tofu cooked in butter with turmeric to mimic scrambled eggs.</p>
-  </div>
+<a class="card" href="recipes/gmb-pouch-spread-plate.html" data-title="the pouch & spread plate" data-cat="gentle morning bites">
+  <div class="card-emoji">🌅</div>
+  <div class="card-title">The Pouch & Spread Plate</div>
+  <div class="card-cat">Gentle Morning Bites</div>
 </a>
-<a href="recipes/tomato-braised-tofu.html" class="card">
-  <img src="images/tomato-braised-tofu.jpg" alt="Tomato Braised Tofu" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#9B59B6">Simple Tofu Recipe</span>
-    <h3>Tomato Braised Tofu</h3>
-    <p>Tofu cubes simmered in a light sauce made from broken-down canned tomatoes and o…</p>
-  </div>
+<a class="card" href="recipes/gmb-comforting-pudding-parfait.html" data-title="comforting pudding parfait" data-cat="gentle morning bites">
+  <div class="card-emoji">🌅</div>
+  <div class="card-title">Comforting Pudding Parfait</div>
+  <div class="card-cat">Gentle Morning Bites</div>
 </a>
-<a href="recipes/light-onion-gravy-tofu.html" class="card">
-  <img src="images/light-onion-gravy-tofu.jpg" alt="Light Onion Gravy Tofu" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#9B59B6">Simple Tofu Recipe</span>
-    <h3>Light Onion Gravy Tofu</h3>
-    <p>Soft tofu warmed in a gentle gravy made from slow-cooked onions and vegetable st…</p>
-  </div>
+<a class="card" href="recipes/gmb-nut-butter-banana-roll.html" data-title="nut butter banana roll" data-cat="gentle morning bites">
+  <div class="card-emoji">🌅</div>
+  <div class="card-title">Nut Butter Banana Roll</div>
+  <div class="card-cat">Gentle Morning Bites</div>
 </a>
-<a href="recipes/soft-tofu-vegetable-soup.html" class="card">
-  <img src="images/soft-tofu-vegetable-soup.jpg" alt="Soft Tofu Vegetable Soup" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#9B59B6">Simple Tofu Recipe</span>
-    <h3>Soft Tofu Vegetable Soup</h3>
-    <p>A comforting bowl of broth with sliced carrots, silken tofu, soy sauce and fresh…</p>
-  </div>
+<a class="card" href="recipes/gmb-high-protein-warm-pudding.html" data-title="high-protein warm pudding" data-cat="gentle morning bites">
+  <div class="card-emoji">🌅</div>
+  <div class="card-title">High-Protein Warm Pudding</div>
+  <div class="card-cat">Gentle Morning Bites</div>
 </a>
-<a href="recipes/pan-seared-tofu-herbs.html" class="card">
-  <img src="images/pan-seared-tofu-herbs.jpg" alt="Pan-Seared Tofu with Pepper & Herbs" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#9B59B6">Simple Tofu Recipe</span>
-    <h3>Pan-Seared Tofu with Pepper & Herbs</h3>
-    <p>Firm tofu cubes lightly browned in oil and seasoned with salt, black pepper and …</p>
-  </div>
+<a class="card" href="recipes/gmb-cottage-cheese-snack-bowl.html" data-title="the cottage cheese snack bowl" data-cat="gentle morning bites">
+  <div class="card-emoji">🌅</div>
+  <div class="card-title">The Cottage Cheese Snack Bowl</div>
+  <div class="card-cat">Gentle Morning Bites</div>
 </a>
-<a href="recipes/tofu-mashed-potato-gravy.html" class="card">
-  <img src="images/tofu-mashed-potato-gravy.jpg" alt="Tofu with Mashed Potato & Gravy" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#9B59B6">Simple Tofu Recipe</span>
-    <h3>Tofu with Mashed Potato & Gravy</h3>
-    <p>Warm tofu cubes served over soft mashed potato and smothered in warm gravy.</p>
-  </div>
+<a class="card" href="recipes/gmb-coffee-companion-cup.html" data-title="the coffee companion cup" data-cat="gentle morning bites">
+  <div class="card-emoji">🌅</div>
+  <div class="card-title">The Coffee Companion Cup</div>
+  <div class="card-cat">Gentle Morning Bites</div>
 </a>
-<a href="recipes/ginger-soy-tofu.html" class="card">
-  <img src="images/ginger-soy-tofu.jpg" alt="Ginger Soy Tofu" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#9B59B6">Simple Tofu Recipe</span>
-    <h3>Ginger Soy Tofu</h3>
-    <p>Tofu warmed in a skillet with soy sauce and fresh or powdered ginger for a mildl…</p>
-  </div>
+<a class="card" href="recipes/gmb-chia-comfort-cup.html" data-title="the chia comfort cup" data-cat="gentle morning bites">
+  <div class="card-emoji">🌅</div>
+  <div class="card-title">The Chia Comfort Cup</div>
+  <div class="card-cat">Gentle Morning Bites</div>
 </a>
-<a href="recipes/cabbage-tofu-stir.html" class="card">
-  <img src="images/cabbage-tofu-stir.jpg" alt="Cabbage & Tofu Stir" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#9B59B6">Simple Tofu Recipe</span>
-    <h3>Cabbage & Tofu Stir</h3>
-    <p>Budget-friendly chopped cabbage softened in a pan, then tossed with tofu cubes a…</p>
-  </div>
+<a class="card" href="recipes/gmb-cold-egg-salad-cups.html" data-title="cold egg salad breakfast cups" data-cat="gentle morning bites">
+  <div class="card-emoji">🌅</div>
+  <div class="card-title">Cold Egg Salad Breakfast Cups</div>
+  <div class="card-cat">Gentle Morning Bites</div>
 </a>
-<a href="recipes/no-energy-savory-tofu-bowl.html" class="card">
-  <img src="images/no-energy-savory-tofu-bowl.jpg" alt="No-Energy Savoury Tofu Bowl" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#9B59B6">Simple Tofu Recipe</span>
-    <h3>No-Energy Savoury Tofu Bowl</h3>
-    <p>Raw or barely-warmed tofu placed in a bowl and simply dressed with soy sauce.</p>
-  </div>
+<a class="card" href="recipes/gmb-frozen-yogurt-bark-bites.html" data-title="frozen yogurt bark bites" data-cat="gentle morning bites">
+  <div class="card-emoji">🌅</div>
+  <div class="card-title">Frozen Yogurt Bark Bites</div>
+  <div class="card-cat">Gentle Morning Bites</div>
 </a>
-</div>
+<a class="card" href="recipes/gmb-mini-meal-plate.html" data-title="the mini meal plate" data-cat="gentle morning bites">
+  <div class="card-emoji">🌅</div>
+  <div class="card-title">The Mini Meal Plate</div>
+  <div class="card-cat">Gentle Morning Bites</div>
+</a>
+<a class="card" href="recipes/gmb-snack-style-breakfast-box.html" data-title="snack-style breakfast box" data-cat="gentle morning bites">
+  <div class="card-emoji">🌅</div>
+  <div class="card-title">Snack-Style Breakfast Box</div>
+  <div class="card-cat">Gentle Morning Bites</div>
+</a></div>
 </section>
-<section class="cat-section">
-<div class="cat-title" style="background:#EBF5FB;color:#2874A6"><span>🥗</span><span>No-Cook Healthy Snack Plates</span><span style="margin-left:auto;font-size:.8rem;color:#2874A680">12 recipes</span></div>
-<div class="card-grid">
-<a href="recipes/protein-power-no-effort-plate.html" class="card">
-  <img src="images/protein-power-no-effort-plate.jpg" alt="Protein Power No-Effort Plate" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#3498DB">No-Cook Healthy Sn</span>
-    <h3>Protein Power No-Effort Plate</h3>
-    <p>Halved boiled eggs, fanned avocado, cherry tomatoes, and stacked whole-grain cra…</p>
-  </div>
+<section class="cat-section" data-cat="no-cook fiber meals">
+  <h2 class="cat-heading">🌿 No-Cook Fiber Meals</h2>
+  <div class="card-grid"><a class="card" href="recipes/ncfm-gut-happy-yogurt-bowl.html" data-title="the gut-happy yogurt fiber bowl" data-cat="no-cook fiber meals">
+  <div class="card-emoji">🌿</div>
+  <div class="card-title">The Gut-Happy Yogurt Fiber Bowl</div>
+  <div class="card-cat">No-Cook Fiber Meals</div>
 </a>
-<a href="recipes/sweet-savory-balance-plate.html" class="card">
-  <img src="images/sweet-savory-balance-plate.jpg" alt="Sweet & Savoury Balance Plate" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#3498DB">No-Cook Healthy Sn</span>
-    <h3>Sweet & Savoury Balance Plate</h3>
-    <p>Greek yoghurt swirled with honey, served alongside sliced fresh apple and walnut…</p>
-  </div>
+<a class="card" href="recipes/ncfm-pb-banana-oat-bowl.html" data-title="creamy pb banana oat bowl" data-cat="no-cook fiber meals">
+  <div class="card-emoji">🌿</div>
+  <div class="card-title">Creamy PB Banana Oat Bowl</div>
+  <div class="card-cat">No-Cook Fiber Meals</div>
 </a>
-<a href="recipes/no-cook-chicken-plate.html" class="card">
-  <img src="images/no-cook-chicken-plate.jpg" alt="No-Cook Chicken Plate" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#3498DB">No-Cook Healthy Sn</span>
-    <h3>No-Cook Chicken Plate</h3>
-    <p>Shredded rotisserie chicken over a bed of greens, drizzled with olive oil and vi…</p>
-  </div>
+<a class="card" href="recipes/ncfm-avocado-chickpea-smash-toast.html" data-title="avocado chickpea smash toast" data-cat="no-cook fiber meals">
+  <div class="card-emoji">🌿</div>
+  <div class="card-title">Avocado Chickpea Smash Toast</div>
+  <div class="card-cat">No-Cook Fiber Meals</div>
 </a>
-<a href="recipes/tuna-without-fuss-plate.html" class="card">
-  <img src="images/tuna-without-fuss-plate.jpg" alt="Tuna Without the Fuss Plate" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#3498DB">No-Cook Healthy Sn</span>
-    <h3>Tuna Without the Fuss Plate</h3>
-    <p>Canned tuna mixed with mayo or yoghurt, served with crisp cucumber slices and cr…</p>
-  </div>
+<a class="card" href="recipes/ncfm-lazy-bean-salad.html" data-title="the lazy bean salad" data-cat="no-cook fiber meals">
+  <div class="card-emoji">🌿</div>
+  <div class="card-title">The Lazy Bean Salad</div>
+  <div class="card-cat">No-Cook Fiber Meals</div>
 </a>
-<a href="recipes/cheese-fiber-combo-plate.html" class="card">
-  <img src="images/cheese-fiber-combo-plate.jpg" alt="Cheese & Fibre Combo Plate" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#3498DB">No-Cook Healthy Sn</span>
-    <h3>Cheese & Fibre Combo Plate</h3>
-    <p>Sliced cheddar or Swiss cheese presented with fanned pear wedges and a cluster o…</p>
-  </div>
+<a class="card" href="recipes/ncfm-berry-almond-fiber-parfait.html" data-title="the berry almond fiber parfait" data-cat="no-cook fiber meals">
+  <div class="card-emoji">🌿</div>
+  <div class="card-title">The Berry Almond Fiber Parfait</div>
+  <div class="card-cat">No-Cook Fiber Meals</div>
 </a>
-<a href="recipes/peanut-butter-comfort-plate.html" class="card">
-  <img src="images/peanut-butter-comfort-plate.jpg" alt="Peanut Butter Comfort Plate" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#3498DB">No-Cook Healthy Sn</span>
-    <h3>Peanut Butter Comfort Plate</h3>
-    <p>A scoop of peanut butter served with sliced bananas and whole-grain toast or ric…</p>
-  </div>
+<a class="card" href="recipes/ncfm-mediterranean-hummus-plate.html" data-title="mediterranean hummus plate" data-cat="no-cook fiber meals">
+  <div class="card-emoji">🌿</div>
+  <div class="card-title">Mediterranean Hummus Plate</div>
+  <div class="card-cat">No-Cook Fiber Meals</div>
 </a>
-<a href="recipes/cottage-cheese-comeback-plate.html" class="card">
-  <img src="images/cottage-cheese-comeback-plate.jpg" alt="Cottage Cheese Comeback Plate" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#3498DB">No-Cook Healthy Sn</span>
-    <h3>Cottage Cheese Comeback Plate</h3>
-    <p>A bowl of cottage cheese topped with pineapple chunks or berries and a sprinkle …</p>
-  </div>
+<a class="card" href="recipes/ncfm-apple-cinnamon-crunch-bowl.html" data-title="the apple cinnamon fiber crunch bowl" data-cat="no-cook fiber meals">
+  <div class="card-emoji">🌿</div>
+  <div class="card-title">The Apple Cinnamon Fiber Crunch Bowl</div>
+  <div class="card-cat">No-Cook Fiber Meals</div>
 </a>
-<a href="recipes/smoked-salmon-light-plate.html" class="card">
-  <img src="images/smoked-salmon-light-plate.jpg" alt="Smoked Salmon Light Plate" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#3498DB">No-Cook Healthy Sn</span>
-    <h3>Smoked Salmon Light Plate</h3>
-    <p>Ribbons of smoked salmon paired with a dollop of cream cheese, cucumber rounds a…</p>
-  </div>
+<a class="card" href="recipes/ncfm-5-minute-power-wrap.html" data-title="the 5-minute power wrap" data-cat="no-cook fiber meals">
+  <div class="card-emoji">🌿</div>
+  <div class="card-title">The 5-Minute Power Wrap</div>
+  <div class="card-cat">No-Cook Fiber Meals</div>
 </a>
-<a href="recipes/bean-crunch-plate.html" class="card">
-  <img src="images/bean-crunch-plate.jpg" alt="Bean & Crunch Plate" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#3498DB">No-Cook Healthy Sn</span>
-    <h3>Bean & Crunch Plate</h3>
-    <p>Rinsed chickpeas lightly oiled and seasoned, served with crunchy carrot sticks a…</p>
-  </div>
+<a class="card" href="recipes/ncfm-savory-cottage-cheese-fiber-bowl.html" data-title="savory cottage cheese fiber bowl" data-cat="no-cook fiber meals">
+  <div class="card-emoji">🌿</div>
+  <div class="card-title">Savory Cottage Cheese Fiber Bowl</div>
+  <div class="card-cat">No-Cook Fiber Meals</div>
 </a>
-<a href="recipes/turkey-roll-ups-plate.html" class="card">
-  <img src="images/turkey-roll-ups-plate.jpg" alt="Turkey Roll-Ups Plate" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#3498DB">No-Cook Healthy Sn</span>
-    <h3>Turkey Roll-Ups Plate</h3>
-    <p>Slices of deli turkey rolled up with cheese, arranged neatly alongside pickles a…</p>
-  </div>
+<a class="card" href="recipes/ncfm-senior-energy-trail-bowl.html" data-title="the senior energy trail bowl" data-cat="no-cook fiber meals">
+  <div class="card-emoji">🌿</div>
+  <div class="card-title">The Senior Energy Trail Bowl</div>
+  <div class="card-cat">No-Cook Fiber Meals</div>
 </a>
-<a href="recipes/avocado-egg-upgrade-plate.html" class="card">
-  <img src="images/avocado-egg-upgrade-plate.jpg" alt="Avocado & Egg Upgrade Plate" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#3498DB">No-Cook Healthy Sn</span>
-    <h3>Avocado & Egg Upgrade Plate</h3>
-    <p>Mashed avocado spread on whole-grain toast, plated alongside a halved boiled egg…</p>
-  </div>
+<a class="card" href="recipes/ncfm-quick-high-fiber-smoothie.html" data-title="the quick high-fiber smoothie" data-cat="no-cook fiber meals">
+  <div class="card-emoji">🌿</div>
+  <div class="card-title">The Quick High-Fiber Smoothie</div>
+  <div class="card-cat">No-Cook Fiber Meals</div>
 </a>
-<a href="recipes/snack-plate-feels-like-meal.html" class="card">
-  <img src="images/snack-plate-feels-like-meal.jpg" alt="Snack Plate That Feels Like a Meal" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#3498DB">No-Cook Healthy Sn</span>
-    <h3>Snack Plate That Feels Like a Meal</h3>
-    <p>A versatile grazing board with cheese cubes, boiled eggs, deli meat, fresh fruit…</p>
-  </div>
-</a>
-</div>
+<a class="card" href="recipes/ncfm-pantry-emergency-fiber-bowl.html" data-title="the pantry emergency fiber bowl" data-cat="no-cook fiber meals">
+  <div class="card-emoji">🌿</div>
+  <div class="card-title">The Pantry Emergency Fiber Bowl</div>
+  <div class="card-cat">No-Cook Fiber Meals</div>
+</a></div>
 </section>
-<section class="cat-section">
-<div class="cat-title" style="background:#FDFAF0;color:#D4A017"><span>⚡</span><span>Quick Grocery-Hack Meals</span><span style="margin-left:auto;font-size:.8rem;color:#D4A01780">4 recipes</span></div>
-<div class="card-grid">
-<a href="recipes/lazy-sandwich-system.html" class="card">
-  <img src="images/lazy-sandwich-system.jpg" alt="Lazy Sandwich System" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#F1C40F">Quick Grocery-Hack</span>
-    <h3>Lazy Sandwich System</h3>
-    <p>Pre-stage sandwich components so you can assemble wraps or sandwiches with zero …</p>
-  </div>
+<section class="cat-section" data-cat="high-protein breakfasts">
+  <h2 class="cat-heading">💪 High-Protein Breakfasts</h2>
+  <div class="card-grid"><a class="card" href="recipes/shpb-sardines-avocado-cracker-plate.html" data-title="sardines & avocado cracker plate" data-cat="high-protein breakfasts">
+  <div class="card-emoji">💪</div>
+  <div class="card-title">Sardines & Avocado Cracker Plate</div>
+  <div class="card-cat">High-Protein Breakfasts</div>
 </a>
-<a href="recipes/quick-tuna-sandwich.html" class="card">
-  <img src="images/quick-tuna-sandwich.jpg" alt="Quick Tuna Sandwich" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#F1C40F">Quick Grocery-Hack</span>
-    <h3>Quick Tuna Sandwich</h3>
-    <p>Canned tuna mixed with a little yoghurt or mayo, served on whole-grain bread wit…</p>
-  </div>
+<a class="card" href="recipes/shpb-hardboiled-egg-hummus-plate.html" data-title="hardboiled egg & hummus plate" data-cat="high-protein breakfasts">
+  <div class="card-emoji">💪</div>
+  <div class="card-title">Hardboiled Egg & Hummus Plate</div>
+  <div class="card-cat">High-Protein Breakfasts</div>
 </a>
-<a href="recipes/mashed-bean-toast.html" class="card">
-  <img src="images/mashed-bean-toast.jpg" alt="Mashed Bean Toast" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#F1C40F">Quick Grocery-Hack</span>
-    <h3>Mashed Bean Toast</h3>
-    <p>Canned beans lightly mashed with a fork, drizzled with olive oil or lemon, and s…</p>
-  </div>
+<a class="card" href="recipes/shpb-quick-overnight-oats.html" data-title="quick no-cook overnight oats" data-cat="high-protein breakfasts">
+  <div class="card-emoji">💪</div>
+  <div class="card-title">Quick No-Cook Overnight Oats</div>
+  <div class="card-cat">High-Protein Breakfasts</div>
 </a>
-<a href="recipes/yogurt-fruit-bowl.html" class="card">
-  <img src="images/yogurt-fruit-bowl.jpg" alt="Yoghurt & Fruit Bowl" loading="lazy">
-  <div class="card-body">
-    <span class="badge" style="background:#F1C40F">Quick Grocery-Hack</span>
-    <h3>Yoghurt & Fruit Bowl</h3>
-    <p>A simple assembly of plain Greek yoghurt, a sliced banana and a sprinkle of raw …</p>
-  </div>
+<a class="card" href="recipes/shpb-turkey-roll-ups-plate.html" data-title="turkey roll-ups plate" data-cat="high-protein breakfasts">
+  <div class="card-emoji">💪</div>
+  <div class="card-title">Turkey Roll-Ups Plate</div>
+  <div class="card-cat">High-Protein Breakfasts</div>
 </a>
-</div>
+<a class="card" href="recipes/shpb-apple-nut-butter-seeds.html" data-title="apple slices with nut butter & seeds" data-cat="high-protein breakfasts">
+  <div class="card-emoji">💪</div>
+  <div class="card-title">Apple Slices with Nut Butter & Seeds</div>
+  <div class="card-cat">High-Protein Breakfasts</div>
+</a>
+<a class="card" href="recipes/shpb-tofu-breakfast-bowl.html" data-title="tofu breakfast bowl" data-cat="high-protein breakfasts">
+  <div class="card-emoji">💪</div>
+  <div class="card-title">Tofu Breakfast Bowl</div>
+  <div class="card-cat">High-Protein Breakfasts</div>
+</a>
+<a class="card" href="recipes/shpb-cottage-cheese-alt-bowl.html" data-title="cottage cheese alternative bowl" data-cat="high-protein breakfasts">
+  <div class="card-emoji">💪</div>
+  <div class="card-title">Cottage Cheese Alternative Bowl</div>
+  <div class="card-cat">High-Protein Breakfasts</div>
+</a>
+<a class="card" href="recipes/shpb-pb-toast-boiled-egg.html" data-title="peanut butter toast + boiled egg" data-cat="high-protein breakfasts">
+  <div class="card-emoji">💪</div>
+  <div class="card-title">Peanut Butter Toast + Boiled Egg</div>
+  <div class="card-cat">High-Protein Breakfasts</div>
+</a>
+<a class="card" href="recipes/shpb-tuna-salad-bowl-no-mayo.html" data-title="tuna salad bowl (no mayo)" data-cat="high-protein breakfasts">
+  <div class="card-emoji">💪</div>
+  <div class="card-title">Tuna Salad Bowl (No Mayo)</div>
+  <div class="card-cat">High-Protein Breakfasts</div>
+</a>
+<a class="card" href="recipes/shpb-mixed-nuts-seeds-power-bowl.html" data-title="mixed nuts & seeds power bowl" data-cat="high-protein breakfasts">
+  <div class="card-emoji">💪</div>
+  <div class="card-title">Mixed Nuts & Seeds Power Bowl</div>
+  <div class="card-cat">High-Protein Breakfasts</div>
+</a>
+<a class="card" href="recipes/shpb-simple-bean-avocado-bowl.html" data-title="simple bean & avocado bowl" data-cat="high-protein breakfasts">
+  <div class="card-emoji">💪</div>
+  <div class="card-title">Simple Bean & Avocado Bowl</div>
+  <div class="card-cat">High-Protein Breakfasts</div>
+</a></div>
 </section>
+<section class="cat-section" data-cat="morning protein">
+  <h2 class="cat-heading">🌄 Morning Protein</h2>
+  <div class="card-grid"><a class="card" href="recipes/smp-sardines-avocado-plate.html" data-title="sardines and avocado plate" data-cat="morning protein">
+  <div class="card-emoji">🌄</div>
+  <div class="card-title">Sardines and Avocado Plate</div>
+  <div class="card-cat">Morning Protein</div>
+</a>
+<a class="card" href="recipes/smp-egg-hummus-plate.html" data-title="the egg & hummus plate" data-cat="morning protein">
+  <div class="card-emoji">🌄</div>
+  <div class="card-title">The Egg & Hummus Plate</div>
+  <div class="card-cat">Morning Protein</div>
+</a>
+<a class="card" href="recipes/smp-quick-overnight-oats.html" data-title="quick overnight oats" data-cat="morning protein">
+  <div class="card-emoji">🌄</div>
+  <div class="card-title">Quick Overnight Oats</div>
+  <div class="card-cat">Morning Protein</div>
+</a>
+<a class="card" href="recipes/smp-turkey-rollups.html" data-title="turkey rollups" data-cat="morning protein">
+  <div class="card-emoji">🌄</div>
+  <div class="card-title">Turkey Rollups</div>
+  <div class="card-cat">Morning Protein</div>
+</a>
+<a class="card" href="recipes/smp-apple-nut-butter.html" data-title="apple & nut butter" data-cat="morning protein">
+  <div class="card-emoji">🌄</div>
+  <div class="card-title">Apple & Nut Butter</div>
+  <div class="card-cat">Morning Protein</div>
+</a>
+<a class="card" href="recipes/smp-savory-tofu-bowl.html" data-title="savory tofu bowl" data-cat="morning protein">
+  <div class="card-emoji">🌄</div>
+  <div class="card-title">Savory Tofu Bowl</div>
+  <div class="card-cat">Morning Protein</div>
+</a>
+<a class="card" href="recipes/smp-cottage-cheese-alt-bowl.html" data-title="cottage cheese alternative bowl" data-cat="morning protein">
+  <div class="card-emoji">🌄</div>
+  <div class="card-title">Cottage Cheese Alternative Bowl</div>
+  <div class="card-cat">Morning Protein</div>
+</a>
+<a class="card" href="recipes/smp-pb-toast-egg.html" data-title="peanut butter toast & egg" data-cat="morning protein">
+  <div class="card-emoji">🌄</div>
+  <div class="card-title">Peanut Butter Toast & Egg</div>
+  <div class="card-cat">Morning Protein</div>
+</a>
+<a class="card" href="recipes/smp-mayo-free-tuna-salad.html" data-title="mayo-free tuna salad" data-cat="morning protein">
+  <div class="card-emoji">🌄</div>
+  <div class="card-title">Mayo-Free Tuna Salad</div>
+  <div class="card-cat">Morning Protein</div>
+</a>
+<a class="card" href="recipes/smp-nuts-seeds-power-bowl.html" data-title="nuts & seeds power bowl" data-cat="morning protein">
+  <div class="card-emoji">🌄</div>
+  <div class="card-title">Nuts & Seeds Power Bowl</div>
+  <div class="card-cat">Morning Protein</div>
+</a>
+<a class="card" href="recipes/smp-simple-bean-avocado-bowl.html" data-title="simple bean & avocado bowl" data-cat="morning protein">
+  <div class="card-emoji">🌄</div>
+  <div class="card-title">Simple Bean & Avocado Bowl</div>
+  <div class="card-cat">Morning Protein</div>
+</a></div>
+</section>
+<section class="cat-section" data-cat="one-pan meals">
+  <h2 class="cat-heading">🍳 One-Pan Meals</h2>
+  <div class="card-grid"><a class="card" href="recipes/sopm-egg-vegetable-scramble.html" data-title="egg & vegetable scramble" data-cat="one-pan meals">
+  <div class="card-emoji">🍳</div>
+  <div class="card-title">Egg & Vegetable Scramble</div>
+  <div class="card-cat">One-Pan Meals</div>
+</a>
+<a class="card" href="recipes/sopm-shrimp-garlic-pan.html" data-title="shrimp & garlic pan" data-cat="one-pan meals">
+  <div class="card-emoji">🍳</div>
+  <div class="card-title">Shrimp & Garlic Pan</div>
+  <div class="card-cat">One-Pan Meals</div>
+</a>
+<a class="card" href="recipes/sopm-garlic-chicken-veggie-skillet.html" data-title="garlic chicken & soft veggie skillet" data-cat="one-pan meals">
+  <div class="card-emoji">🍳</div>
+  <div class="card-title">Garlic Chicken & Soft Veggie Skillet</div>
+  <div class="card-cat">One-Pan Meals</div>
+</a>
+<a class="card" href="recipes/sopm-lazy-salmon-green-beans.html" data-title="lazy salmon & green beans" data-cat="one-pan meals">
+  <div class="card-emoji">🍳</div>
+  <div class="card-title">Lazy Salmon & Green Beans</div>
+  <div class="card-cat">One-Pan Meals</div>
+</a>
+<a class="card" href="recipes/sopm-ground-turkey-cabbage-stir.html" data-title="ground turkey & cabbage stir" data-cat="one-pan meals">
+  <div class="card-emoji">🍳</div>
+  <div class="card-title">Ground Turkey & Cabbage Stir</div>
+  <div class="card-cat">One-Pan Meals</div>
+</a>
+<a class="card" href="recipes/sopm-lentil-veg-stew.html" data-title="one-pan lentil & veg stew" data-cat="one-pan meals">
+  <div class="card-emoji">🍳</div>
+  <div class="card-title">One-Pan Lentil & Veg Stew</div>
+  <div class="card-cat">One-Pan Meals</div>
+</a>
+<a class="card" href="recipes/sopm-eggplant-chickpea-stew.html" data-title="eggplant & chickpea stew" data-cat="one-pan meals">
+  <div class="card-emoji">🍳</div>
+  <div class="card-title">Eggplant & Chickpea Stew</div>
+  <div class="card-cat">One-Pan Meals</div>
+</a>
+<a class="card" href="recipes/sopm-sardine-tomato-skillet.html" data-title="sardine & tomato warm skillet" data-cat="one-pan meals">
+  <div class="card-emoji">🍳</div>
+  <div class="card-title">Sardine & Tomato Warm Skillet</div>
+  <div class="card-cat">One-Pan Meals</div>
+</a>
+<a class="card" href="recipes/sopm-chicken-sweet-potato-hash.html" data-title="chicken & sweet potato hash" data-cat="one-pan meals">
+  <div class="card-emoji">🍳</div>
+  <div class="card-title">Chicken & Sweet Potato Hash</div>
+  <div class="card-cat">One-Pan Meals</div>
+</a>
+<a class="card" href="recipes/sopm-beef-zucchini-pan.html" data-title="one-pan beef & zucchini" data-cat="one-pan meals">
+  <div class="card-emoji">🍳</div>
+  <div class="card-title">One-Pan Beef & Zucchini</div>
+  <div class="card-cat">One-Pan Meals</div>
+</a>
+<a class="card" href="recipes/sopm-chicken-mushroom-gravy.html" data-title="chicken & mushroom gravy" data-cat="one-pan meals">
+  <div class="card-emoji">🍳</div>
+  <div class="card-title">Chicken & Mushroom Gravy</div>
+  <div class="card-cat">One-Pan Meals</div>
+</a></div>
+</section>
+<section class="cat-section" data-cat="single pan supper">
+  <h2 class="cat-heading">🫕 Single Pan Supper</h2>
+  <div class="card-grid"><a class="card" href="recipes/spsu-chicken-veggie-bake.html" data-title="chicken & veggie bake" data-cat="single pan supper">
+  <div class="card-emoji">🫕</div>
+  <div class="card-title">Chicken & Veggie Bake</div>
+  <div class="card-cat">Single Pan Supper</div>
+</a>
+<a class="card" href="recipes/spsu-honey-garlic-salmon-broccoli.html" data-title="honey garlic salmon & broccoli" data-cat="single pan supper">
+  <div class="card-emoji">🫕</div>
+  <div class="card-title">Honey Garlic Salmon & Broccoli</div>
+  <div class="card-cat">Single Pan Supper</div>
+</a>
+<a class="card" href="recipes/spsu-sausage-cabbage-apple-roast.html" data-title="sausage, cabbage & apple roast" data-cat="single pan supper">
+  <div class="card-emoji">🫕</div>
+  <div class="card-title">Sausage, Cabbage & Apple Roast</div>
+  <div class="card-cat">Single Pan Supper</div>
+</a>
+<a class="card" href="recipes/spsu-lemon-herb-tilapia-green-beans.html" data-title="lemon herb tilapia & green beans" data-cat="single pan supper">
+  <div class="card-emoji">🫕</div>
+  <div class="card-title">Lemon Herb Tilapia & Green Beans</div>
+  <div class="card-cat">Single Pan Supper</div>
+</a>
+<a class="card" href="recipes/spsu-lazy-turkey-cabbage-roll.html" data-title="lazy ground turkey cabbage roll" data-cat="single pan supper">
+  <div class="card-emoji">🫕</div>
+  <div class="card-title">Lazy Ground Turkey Cabbage Roll</div>
+  <div class="card-cat">Single Pan Supper</div>
+</a>
+<a class="card" href="recipes/spsu-shrimp-veggie-stir-fry.html" data-title="shrimp & veggie stir fry" data-cat="single pan supper">
+  <div class="card-emoji">🫕</div>
+  <div class="card-title">Shrimp & Veggie Stir Fry</div>
+  <div class="card-cat">Single Pan Supper</div>
+</a>
+<a class="card" href="recipes/spsu-sweet-potato-black-bean-bowl.html" data-title="sweet potato & black bean fiesta bowl" data-cat="single pan supper">
+  <div class="card-emoji">🫕</div>
+  <div class="card-title">Sweet Potato & Black Bean Fiesta Bowl</div>
+  <div class="card-cat">Single Pan Supper</div>
+</a>
+<a class="card" href="recipes/spsu-one-pan-pasta-primavera.html" data-title="one-pan pasta primavera" data-cat="single pan supper">
+  <div class="card-emoji">🫕</div>
+  <div class="card-title">One-Pan Pasta Primavera</div>
+  <div class="card-cat">Single Pan Supper</div>
+</a>
+<a class="card" href="recipes/spsu-mediterranean-chicken.html" data-title="mediterranean chicken with olives" data-cat="single pan supper">
+  <div class="card-emoji">🫕</div>
+  <div class="card-title">Mediterranean Chicken with Olives</div>
+  <div class="card-cat">Single Pan Supper</div>
+</a>
+<a class="card" href="recipes/spsu-baked-egg-frittata.html" data-title="baked egg frittata" data-cat="single pan supper">
+  <div class="card-emoji">🫕</div>
+  <div class="card-title">Baked Egg Frittata</div>
+  <div class="card-cat">Single Pan Supper</div>
+</a></div>
+</section>
+<section class="cat-section" data-cat="tofu simplified">
+  <h2 class="cat-heading">🌱 Tofu Simplified</h2>
+  <div class="card-grid"><a class="card" href="recipes/tofu-savory-scramble.html" data-title="savory tofu scramble" data-cat="tofu simplified">
+  <div class="card-emoji">🌱</div>
+  <div class="card-title">Savory Tofu Scramble</div>
+  <div class="card-cat">Tofu Simplified</div>
+</a>
+<a class="card" href="recipes/tofu-tomato-braised.html" data-title="tomato braised tofu" data-cat="tofu simplified">
+  <div class="card-emoji">🌱</div>
+  <div class="card-title">Tomato Braised Tofu</div>
+  <div class="card-cat">Tofu Simplified</div>
+</a>
+<a class="card" href="recipes/tofu-light-onion-gravy.html" data-title="light onion gravy tofu" data-cat="tofu simplified">
+  <div class="card-emoji">🌱</div>
+  <div class="card-title">Light Onion Gravy Tofu</div>
+  <div class="card-cat">Tofu Simplified</div>
+</a>
+<a class="card" href="recipes/tofu-soft-vegetable-soup.html" data-title="soft tofu vegetable soup" data-cat="tofu simplified">
+  <div class="card-emoji">🌱</div>
+  <div class="card-title">Soft Tofu Vegetable Soup</div>
+  <div class="card-cat">Tofu Simplified</div>
+</a>
+<a class="card" href="recipes/tofu-pan-seared-pepper-herbs.html" data-title="pan-seared tofu with pepper & herbs" data-cat="tofu simplified">
+  <div class="card-emoji">🌱</div>
+  <div class="card-title">Pan-Seared Tofu with Pepper & Herbs</div>
+  <div class="card-cat">Tofu Simplified</div>
+</a>
+<a class="card" href="recipes/tofu-mashed-potatoes-gravy.html" data-title="tofu with mashed potatoes & gravy" data-cat="tofu simplified">
+  <div class="card-emoji">🌱</div>
+  <div class="card-title">Tofu with Mashed Potatoes & Gravy</div>
+  <div class="card-cat">Tofu Simplified</div>
+</a>
+<a class="card" href="recipes/tofu-ginger-soy.html" data-title="ginger soy tofu" data-cat="tofu simplified">
+  <div class="card-emoji">🌱</div>
+  <div class="card-title">Ginger Soy Tofu</div>
+  <div class="card-cat">Tofu Simplified</div>
+</a>
+<a class="card" href="recipes/tofu-rice-comfort-bowl.html" data-title="tofu and rice comfort bowl" data-cat="tofu simplified">
+  <div class="card-emoji">🌱</div>
+  <div class="card-title">Tofu and Rice Comfort Bowl</div>
+  <div class="card-cat">Tofu Simplified</div>
+</a>
+<a class="card" href="recipes/tofu-creamy-savory.html" data-title="creamy savory tofu" data-cat="tofu simplified">
+  <div class="card-emoji">🌱</div>
+  <div class="card-title">Creamy Savory Tofu</div>
+  <div class="card-cat">Tofu Simplified</div>
+</a>
+<a class="card" href="recipes/tofu-cabbage-stir.html" data-title="cabbage and tofu stir" data-cat="tofu simplified">
+  <div class="card-emoji">🌱</div>
+  <div class="card-title">Cabbage and Tofu Stir</div>
+  <div class="card-cat">Tofu Simplified</div>
+</a>
+<a class="card" href="recipes/tofu-garlic-soy-bowl.html" data-title="the garlic soy bowl" data-cat="tofu simplified">
+  <div class="card-emoji">🌱</div>
+  <div class="card-title">The Garlic Soy Bowl</div>
+  <div class="card-cat">Tofu Simplified</div>
+</a>
+<a class="card" href="recipes/tofu-no-energy-savory-bowl.html" data-title="the no-energy savory bowl" data-cat="tofu simplified">
+  <div class="card-emoji">🌱</div>
+  <div class="card-title">The No-Energy Savory Bowl</div>
+  <div class="card-cat">Tofu Simplified</div>
+</a>
+<a class="card" href="recipes/tofu-avocado-savory-mash.html" data-title="tofu & avocado savory mash" data-cat="tofu simplified">
+  <div class="card-emoji">🌱</div>
+  <div class="card-title">Tofu & Avocado Savory Mash</div>
+  <div class="card-cat">Tofu Simplified</div>
+</a>
+<a class="card" href="recipes/tofu-berry-smoothie-bowl.html" data-title="tofu & berry smoothie bowl" data-cat="tofu simplified">
+  <div class="card-emoji">🌱</div>
+  <div class="card-title">Tofu & Berry Smoothie Bowl</div>
+  <div class="card-cat">Tofu Simplified</div>
+</a>
+<a class="card" href="recipes/tofu-bok-choy-pan.html" data-title="tofu & bok choy pan" data-cat="tofu simplified">
+  <div class="card-emoji">🌱</div>
+  <div class="card-title">Tofu & Bok Choy Pan</div>
+  <div class="card-cat">Tofu Simplified</div>
+</a>
+<a class="card" href="recipes/tofu-spinach-scramble.html" data-title="tofu & spinach scramble" data-cat="tofu simplified">
+  <div class="card-emoji">🌱</div>
+  <div class="card-title">Tofu & Spinach Scramble</div>
+  <div class="card-cat">Tofu Simplified</div>
+</a>
+<a class="card" href="recipes/tofu-warm-lentil-bowl.html" data-title="warm tofu & lentil bowl" data-cat="tofu simplified">
+  <div class="card-emoji">🌱</div>
+  <div class="card-title">Warm Tofu & Lentil Bowl</div>
+  <div class="card-cat">Tofu Simplified</div>
+</a></div>
+</section>
+
+  <div class="no-results" id="no-results">No recipes found. Try a different word.</div>
 </div>
-<footer>
-  <p>Seniors Recipes Wiki · Simple, healthy meals for ages 75+ · High protein · High fibre · Minimal processing</p>
-</footer>
-</body></html>
+<footer>107 recipes · All simple, healthy and designed for one person</footer>
+<script>
+const search = document.getElementById('search');
+const cards = Array.from(document.querySelectorAll('.card'));
+const sections = Array.from(document.querySelectorAll('.cat-section'));
+const noResults = document.getElementById('no-results');
+
+search.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  let visible = 0;
+  sections.forEach(sec => {
+    let secVisible = 0;
+    sec.querySelectorAll('.card').forEach(card => {
+      const match = !q || card.dataset.title.includes(q) || card.dataset.cat.includes(q);
+      card.style.display = match ? '' : 'none';
+      if (match) secVisible++;
+    });
+    sec.style.display = secVisible > 0 ? '' : 'none';
+    visible += secVisible;
+  });
+  noResults.style.display = visible === 0 ? 'block' : 'none';
+});
+</script>
+</body>
+</html>
