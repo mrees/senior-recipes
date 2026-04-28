@@ -20,18 +20,63 @@ header p { opacity:0.85; font-size:1.05em; font-family:Arial,sans-serif; }
 .search-bar input { width:100%; max-width:560px; padding:12px 18px; font-size:1em; border:2px solid var(--border); border-radius:30px; font-family:Arial,sans-serif; outline:none; background:var(--cream); transition:border-color .2s; }
 .search-bar input:focus { border-color:var(--green); }
 
-.container { max-width:1100px; margin:0 auto; padding:32px 20px 60px; }
+.container { max-width:1200px; margin:0 auto; padding:32px 20px 60px; }
 
 .cat-section { margin-bottom:48px; }
 .cat-heading { font-size:1.5em; color:var(--green); margin-bottom:16px; padding-bottom:8px; border-bottom:2px solid var(--border); }
 
-.card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:14px; }
+.card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:16px; }
 
-.card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px 16px; text-decoration:none; color:var(--text); display:block; transition:transform .15s, box-shadow .15s; }
-.card:hover { transform:translateY(-3px); box-shadow:0 6px 20px rgba(0,0,0,0.1); }
-.card-emoji { font-size:1.8em; margin-bottom:8px; }
-.card-title { font-size:0.95em; font-weight:bold; margin-bottom:4px; line-height:1.4; }
-.card-cat { font-size:0.75em; color:var(--warm); font-family:Arial,sans-serif; text-transform:uppercase; letter-spacing:0.5px; }
+.card {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
+  text-decoration:none;
+  color:var(--text);
+  display:block;
+  transition:transform .15s, box-shadow .15s;
+}
+.card:hover { transform:translateY(-3px); box-shadow:0 6px 20px rgba(0,0,0,0.12); }
+
+.card-thumb {
+  width:100%;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  background:#111;
+}
+.card-thumb img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .3s;
+}
+.card:hover .card-thumb img { transform:scale(1.03); }
+.card-no-img {
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2.5em;
+  background:var(--light-green);
+}
+
+.card-title {
+  font-size:0.9em;
+  font-weight:bold;
+  padding:10px 12px 4px;
+  line-height:1.35;
+}
+.card-cat {
+  font-size:0.7em;
+  color:var(--warm);
+  font-family:Arial,sans-serif;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  padding:0 12px 10px;
+}
 
 .no-results { text-align:center; padding:60px 20px; color:#888; font-family:Arial,sans-serif; font-size:1.1em; display:none; }
 
@@ -49,571 +94,491 @@ footer { background:var(--green); color:#fff; text-align:center; padding:20px; f
 <div class="container" id="main-container">
   <section class="cat-section" data-cat="no-cook plates">
   <h2 class="cat-heading">🥗 No-Cook Plates</h2>
-  <div class="card-grid"><a class="card" href="recipes/artful-protein-power-plate.html" data-title="the protein power plate" data-cat="no-cook plates">
-  <div class="card-emoji">🥗</div>
+  <div class="card-grid">
+<a class="card" href="recipes/artful-protein-power-plate.html" data-title="the protein power plate" data-cat="no-cook plates">
+  <div class="card-thumb"><img src="images/artful-protein-power-plate.jpg" alt="The Protein Power Plate" loading="lazy"></div>
   <div class="card-title">The Protein Power Plate</div>
   <div class="card-cat">No-Cook Plates</div>
-</a>
-<a class="card" href="recipes/artful-sweet-savory-balance.html" data-title="the sweet & savory balance" data-cat="no-cook plates">
-  <div class="card-emoji">🥗</div>
+</a><a class="card" href="recipes/artful-sweet-savory-balance.html" data-title="the sweet & savory balance" data-cat="no-cook plates">
+  <div class="card-thumb"><img src="images/artful-sweet-savory-balance.jpg" alt="The Sweet & Savory Balance" loading="lazy"></div>
   <div class="card-title">The Sweet & Savory Balance</div>
   <div class="card-cat">No-Cook Plates</div>
-</a>
-<a class="card" href="recipes/artful-no-cook-chicken.html" data-title="the no-cook chicken plate" data-cat="no-cook plates">
-  <div class="card-emoji">🥗</div>
+</a><a class="card" href="recipes/artful-no-cook-chicken.html" data-title="the no-cook chicken plate" data-cat="no-cook plates">
+  <div class="card-thumb"><img src="images/artful-no-cook-chicken.jpg" alt="The No-Cook Chicken Plate" loading="lazy"></div>
   <div class="card-title">The No-Cook Chicken Plate</div>
   <div class="card-cat">No-Cook Plates</div>
-</a>
-<a class="card" href="recipes/artful-tuna-without-fuss.html" data-title="tuna without the fuss" data-cat="no-cook plates">
-  <div class="card-emoji">🥗</div>
+</a><a class="card" href="recipes/artful-tuna-without-fuss.html" data-title="tuna without the fuss" data-cat="no-cook plates">
+  <div class="card-thumb"><img src="images/artful-tuna-without-fuss.jpg" alt="Tuna Without the Fuss" loading="lazy"></div>
   <div class="card-title">Tuna Without the Fuss</div>
   <div class="card-cat">No-Cook Plates</div>
-</a>
-<a class="card" href="recipes/artful-cheese-fiber-combo.html" data-title="the cheese & fibre combo" data-cat="no-cook plates">
-  <div class="card-emoji">🥗</div>
+</a><a class="card" href="recipes/artful-cheese-fiber-combo.html" data-title="the cheese & fibre combo" data-cat="no-cook plates">
+  <div class="card-thumb"><img src="images/artful-cheese-fiber-combo.jpg" alt="The Cheese & Fibre Combo" loading="lazy"></div>
   <div class="card-title">The Cheese & Fibre Combo</div>
   <div class="card-cat">No-Cook Plates</div>
-</a>
-<a class="card" href="recipes/artful-peanut-butter-comfort.html" data-title="the peanut butter comfort plate" data-cat="no-cook plates">
-  <div class="card-emoji">🥗</div>
+</a><a class="card" href="recipes/artful-peanut-butter-comfort.html" data-title="the peanut butter comfort plate" data-cat="no-cook plates">
+  <div class="card-thumb"><img src="images/artful-peanut-butter-comfort.jpg" alt="The Peanut Butter Comfort Plate" loading="lazy"></div>
   <div class="card-title">The Peanut Butter Comfort Plate</div>
   <div class="card-cat">No-Cook Plates</div>
-</a>
-<a class="card" href="recipes/artful-cottage-cheese-comeback.html" data-title="the cottage cheese comeback" data-cat="no-cook plates">
-  <div class="card-emoji">🥗</div>
+</a><a class="card" href="recipes/artful-cottage-cheese-comeback.html" data-title="the cottage cheese comeback" data-cat="no-cook plates">
+  <div class="card-thumb"><img src="images/artful-cottage-cheese-comeback.jpg" alt="The Cottage Cheese Comeback" loading="lazy"></div>
   <div class="card-title">The Cottage Cheese Comeback</div>
   <div class="card-cat">No-Cook Plates</div>
-</a>
-<a class="card" href="recipes/artful-smoked-salmon-light.html" data-title="the smoked salmon light plate" data-cat="no-cook plates">
-  <div class="card-emoji">🥗</div>
+</a><a class="card" href="recipes/artful-smoked-salmon-light.html" data-title="the smoked salmon light plate" data-cat="no-cook plates">
+  <div class="card-thumb"><img src="images/artful-smoked-salmon-light.jpg" alt="The Smoked Salmon Light Plate" loading="lazy"></div>
   <div class="card-title">The Smoked Salmon Light Plate</div>
   <div class="card-cat">No-Cook Plates</div>
-</a>
-<a class="card" href="recipes/artful-bean-crunch-plate.html" data-title="the bean & crunch plate" data-cat="no-cook plates">
-  <div class="card-emoji">🥗</div>
+</a><a class="card" href="recipes/artful-bean-crunch-plate.html" data-title="the bean & crunch plate" data-cat="no-cook plates">
+  <div class="card-thumb"><img src="images/artful-bean-crunch-plate.jpg" alt="The Bean & Crunch Plate" loading="lazy"></div>
   <div class="card-title">The Bean & Crunch Plate</div>
   <div class="card-cat">No-Cook Plates</div>
-</a>
-<a class="card" href="recipes/artful-turkey-roll-ups.html" data-title="the turkey roll-ups" data-cat="no-cook plates">
-  <div class="card-emoji">🥗</div>
+</a><a class="card" href="recipes/artful-turkey-roll-ups.html" data-title="the turkey roll-ups" data-cat="no-cook plates">
+  <div class="card-thumb"><img src="images/artful-turkey-roll-ups.jpg" alt="The Turkey Roll-Ups" loading="lazy"></div>
   <div class="card-title">The Turkey Roll-Ups</div>
   <div class="card-cat">No-Cook Plates</div>
-</a>
-<a class="card" href="recipes/artful-avocado-egg-upgrade.html" data-title="the avocado & egg upgrade" data-cat="no-cook plates">
-  <div class="card-emoji">🥗</div>
+</a><a class="card" href="recipes/artful-avocado-egg-upgrade.html" data-title="the avocado & egg upgrade" data-cat="no-cook plates">
+  <div class="card-thumb"><img src="images/artful-avocado-egg-upgrade.jpg" alt="The Avocado & Egg Upgrade" loading="lazy"></div>
   <div class="card-title">The Avocado & Egg Upgrade</div>
   <div class="card-cat">No-Cook Plates</div>
-</a>
-<a class="card" href="recipes/artful-no-decision-snack.html" data-title="the no decision snack plate" data-cat="no-cook plates">
-  <div class="card-emoji">🥗</div>
+</a><a class="card" href="recipes/artful-no-decision-snack.html" data-title="the no decision snack plate" data-cat="no-cook plates">
+  <div class="card-thumb"><img src="images/artful-no-decision-snack.jpg" alt="The No Decision Snack Plate" loading="lazy"></div>
   <div class="card-title">The No Decision Snack Plate</div>
   <div class="card-cat">No-Cook Plates</div>
-</a></div>
-</section>
-<section class="cat-section" data-cat="5-minute meals">
+</a>
+  </div>
+  </section>
+  <section class="cat-section" data-cat="5-minute meals">
   <h2 class="cat-heading">🍳 5-Minute Meals</h2>
-  <div class="card-grid"><a class="card" href="recipes/cozy-egg-spinach-bean-skillet.html" data-title="warm egg, spinach & white bean skillet" data-cat="5-minute meals">
-  <div class="card-emoji">🍳</div>
+  <div class="card-grid">
+<a class="card" href="recipes/cozy-egg-spinach-bean-skillet.html" data-title="warm egg, spinach & white bean skillet" data-cat="5-minute meals">
+  <div class="card-thumb"><img src="images/cozy-egg-spinach-bean-skillet.jpg" alt="Warm Egg, Spinach & White Bean Skillet" loading="lazy"></div>
   <div class="card-title">Warm Egg, Spinach & White Bean Skillet</div>
   <div class="card-cat">5-Minute Meals</div>
-</a>
-<a class="card" href="recipes/cozy-pb-banana-oatmeal.html" data-title="warm pb banana oatmeal" data-cat="5-minute meals">
-  <div class="card-emoji">🍳</div>
+</a><a class="card" href="recipes/cozy-pb-banana-oatmeal.html" data-title="warm pb banana oatmeal" data-cat="5-minute meals">
+  <div class="card-thumb"><img src="images/cozy-pb-banana-oatmeal.jpg" alt="Warm PB Banana Oatmeal" loading="lazy"></div>
   <div class="card-title">Warm PB Banana Oatmeal</div>
   <div class="card-cat">5-Minute Meals</div>
-</a>
-<a class="card" href="recipes/cozy-tuna-chickpea-skillet.html" data-title="tuna & chickpea warm skillet" data-cat="5-minute meals">
-  <div class="card-emoji">🍳</div>
+</a><a class="card" href="recipes/cozy-tuna-chickpea-skillet.html" data-title="tuna & chickpea warm skillet" data-cat="5-minute meals">
+  <div class="card-thumb"><img src="images/cozy-tuna-chickpea-skillet.jpg" alt="Tuna & Chickpea Warm Skillet" loading="lazy"></div>
   <div class="card-title">Tuna & Chickpea Warm Skillet</div>
   <div class="card-cat">5-Minute Meals</div>
-</a>
-<a class="card" href="recipes/cozy-lentil-tomato-bowl.html" data-title="warm lentil & tomato comfort bowl" data-cat="5-minute meals">
-  <div class="card-emoji">🍳</div>
+</a><a class="card" href="recipes/cozy-lentil-tomato-bowl.html" data-title="warm lentil & tomato comfort bowl" data-cat="5-minute meals">
+  <div class="card-thumb"><img src="images/cozy-lentil-tomato-bowl.jpg" alt="Warm Lentil & Tomato Comfort Bowl" loading="lazy"></div>
   <div class="card-title">Warm Lentil & Tomato Comfort Bowl</div>
   <div class="card-cat">5-Minute Meals</div>
-</a>
-<a class="card" href="recipes/cozy-cottage-apple-skillet.html" data-title="cottage cheese & warm apple skillet" data-cat="5-minute meals">
-  <div class="card-emoji">🍳</div>
+</a><a class="card" href="recipes/cozy-cottage-apple-skillet.html" data-title="cottage cheese & warm apple skillet" data-cat="5-minute meals">
+  <div class="card-thumb"><img src="images/cozy-cottage-apple-skillet.jpg" alt="Cottage Cheese & Warm Apple Skillet" loading="lazy"></div>
   <div class="card-title">Cottage Cheese & Warm Apple Skillet</div>
   <div class="card-cat">5-Minute Meals</div>
-</a>
-<a class="card" href="recipes/cozy-sardine-avocado-toast.html" data-title="simple sardine & avocado toast" data-cat="5-minute meals">
-  <div class="card-emoji">🍳</div>
+</a><a class="card" href="recipes/cozy-sardine-avocado-toast.html" data-title="simple sardine & avocado toast" data-cat="5-minute meals">
+  <div class="card-thumb"><img src="images/cozy-sardine-avocado-toast.jpg" alt="Simple Sardine & Avocado Toast" loading="lazy"></div>
   <div class="card-title">Simple Sardine & Avocado Toast</div>
   <div class="card-cat">5-Minute Meals</div>
-</a>
-<a class="card" href="recipes/cozy-chicken-bean-wrap.html" data-title="chicken & bean warm wrap" data-cat="5-minute meals">
-  <div class="card-emoji">🍳</div>
+</a><a class="card" href="recipes/cozy-chicken-bean-wrap.html" data-title="chicken & bean warm wrap" data-cat="5-minute meals">
+  <div class="card-thumb"><img src="images/cozy-chicken-bean-wrap.jpg" alt="Chicken & Bean Warm Wrap" loading="lazy"></div>
   <div class="card-title">Chicken & Bean Warm Wrap</div>
   <div class="card-cat">5-Minute Meals</div>
-</a>
-<a class="card" href="recipes/cozy-quinoa-egg-bowl.html" data-title="quinoa egg breakfast bowl" data-cat="5-minute meals">
-  <div class="card-emoji">🍳</div>
+</a><a class="card" href="recipes/cozy-quinoa-egg-bowl.html" data-title="quinoa egg breakfast bowl" data-cat="5-minute meals">
+  <div class="card-thumb"><img src="images/cozy-quinoa-egg-bowl.jpg" alt="Quinoa Egg Breakfast Bowl" loading="lazy"></div>
   <div class="card-title">Quinoa Egg Breakfast Bowl</div>
   <div class="card-cat">5-Minute Meals</div>
-</a>
-<a class="card" href="recipes/cozy-greek-yogurt-berry-oats.html" data-title="warm greek yogurt berry oats" data-cat="5-minute meals">
-  <div class="card-emoji">🍳</div>
+</a><a class="card" href="recipes/cozy-greek-yogurt-berry-oats.html" data-title="warm greek yogurt berry oats" data-cat="5-minute meals">
+  <div class="card-thumb"><img src="images/cozy-greek-yogurt-berry-oats.jpg" alt="Warm Greek Yogurt Berry Oats" loading="lazy"></div>
   <div class="card-title">Warm Greek Yogurt Berry Oats</div>
   <div class="card-cat">5-Minute Meals</div>
-</a>
-<a class="card" href="recipes/cozy-turkey-white-bean-skillet.html" data-title="turkey & white bean skillet" data-cat="5-minute meals">
-  <div class="card-emoji">🍳</div>
+</a><a class="card" href="recipes/cozy-turkey-white-bean-skillet.html" data-title="turkey & white bean skillet" data-cat="5-minute meals">
+  <div class="card-thumb"><img src="images/cozy-turkey-white-bean-skillet.jpg" alt="Turkey & White Bean Skillet" loading="lazy"></div>
   <div class="card-title">Turkey & White Bean Skillet</div>
   <div class="card-cat">5-Minute Meals</div>
-</a>
-<a class="card" href="recipes/cozy-hummus-chickpea-toast.html" data-title="hummus & warm chickpea toast" data-cat="5-minute meals">
-  <div class="card-emoji">🍳</div>
+</a><a class="card" href="recipes/cozy-hummus-chickpea-toast.html" data-title="hummus & warm chickpea toast" data-cat="5-minute meals">
+  <div class="card-thumb"><img src="images/cozy-hummus-chickpea-toast.jpg" alt="Hummus & Warm Chickpea Toast" loading="lazy"></div>
   <div class="card-title">Hummus & Warm Chickpea Toast</div>
   <div class="card-cat">5-Minute Meals</div>
-</a></div>
-</section>
-<section class="cat-section" data-cat="gentle morning bites">
+</a>
+  </div>
+  </section>
+  <section class="cat-section" data-cat="gentle morning bites">
   <h2 class="cat-heading">🌅 Gentle Morning Bites</h2>
-  <div class="card-grid"><a class="card" href="recipes/gmb-fortified-smoothie.html" data-title="the fortified smoothie" data-cat="gentle morning bites">
-  <div class="card-emoji">🌅</div>
+  <div class="card-grid">
+<a class="card" href="recipes/gmb-fortified-smoothie.html" data-title="the fortified smoothie" data-cat="gentle morning bites">
+  <div class="card-thumb"><img src="images/gmb-fortified-smoothie.jpg" alt="The Fortified Smoothie" loading="lazy"></div>
   <div class="card-title">The Fortified Smoothie</div>
   <div class="card-cat">Gentle Morning Bites</div>
-</a>
-<a class="card" href="recipes/gmb-pouch-spread-plate.html" data-title="the pouch & spread plate" data-cat="gentle morning bites">
-  <div class="card-emoji">🌅</div>
+</a><a class="card" href="recipes/gmb-pouch-spread-plate.html" data-title="the pouch & spread plate" data-cat="gentle morning bites">
+  <div class="card-thumb"><img src="images/gmb-pouch-spread-plate.jpg" alt="The Pouch & Spread Plate" loading="lazy"></div>
   <div class="card-title">The Pouch & Spread Plate</div>
   <div class="card-cat">Gentle Morning Bites</div>
-</a>
-<a class="card" href="recipes/gmb-comforting-pudding-parfait.html" data-title="comforting pudding parfait" data-cat="gentle morning bites">
-  <div class="card-emoji">🌅</div>
+</a><a class="card" href="recipes/gmb-comforting-pudding-parfait.html" data-title="comforting pudding parfait" data-cat="gentle morning bites">
+  <div class="card-thumb"><img src="images/gmb-comforting-pudding-parfait.jpg" alt="Comforting Pudding Parfait" loading="lazy"></div>
   <div class="card-title">Comforting Pudding Parfait</div>
   <div class="card-cat">Gentle Morning Bites</div>
-</a>
-<a class="card" href="recipes/gmb-nut-butter-banana-roll.html" data-title="nut butter banana roll" data-cat="gentle morning bites">
-  <div class="card-emoji">🌅</div>
+</a><a class="card" href="recipes/gmb-nut-butter-banana-roll.html" data-title="nut butter banana roll" data-cat="gentle morning bites">
+  <div class="card-thumb"><img src="images/gmb-nut-butter-banana-roll.jpg" alt="Nut Butter Banana Roll" loading="lazy"></div>
   <div class="card-title">Nut Butter Banana Roll</div>
   <div class="card-cat">Gentle Morning Bites</div>
-</a>
-<a class="card" href="recipes/gmb-high-protein-warm-pudding.html" data-title="high-protein warm pudding" data-cat="gentle morning bites">
-  <div class="card-emoji">🌅</div>
+</a><a class="card" href="recipes/gmb-high-protein-warm-pudding.html" data-title="high-protein warm pudding" data-cat="gentle morning bites">
+  <div class="card-thumb"><img src="images/gmb-high-protein-warm-pudding.jpg" alt="High-Protein Warm Pudding" loading="lazy"></div>
   <div class="card-title">High-Protein Warm Pudding</div>
   <div class="card-cat">Gentle Morning Bites</div>
-</a>
-<a class="card" href="recipes/gmb-cottage-cheese-snack-bowl.html" data-title="the cottage cheese snack bowl" data-cat="gentle morning bites">
-  <div class="card-emoji">🌅</div>
+</a><a class="card" href="recipes/gmb-cottage-cheese-snack-bowl.html" data-title="the cottage cheese snack bowl" data-cat="gentle morning bites">
+  <div class="card-thumb"><img src="images/gmb-cottage-cheese-snack-bowl.jpg" alt="The Cottage Cheese Snack Bowl" loading="lazy"></div>
   <div class="card-title">The Cottage Cheese Snack Bowl</div>
   <div class="card-cat">Gentle Morning Bites</div>
-</a>
-<a class="card" href="recipes/gmb-coffee-companion-cup.html" data-title="the coffee companion cup" data-cat="gentle morning bites">
-  <div class="card-emoji">🌅</div>
+</a><a class="card" href="recipes/gmb-coffee-companion-cup.html" data-title="the coffee companion cup" data-cat="gentle morning bites">
+  <div class="card-thumb"><img src="images/gmb-coffee-companion-cup.jpg" alt="The Coffee Companion Cup" loading="lazy"></div>
   <div class="card-title">The Coffee Companion Cup</div>
   <div class="card-cat">Gentle Morning Bites</div>
-</a>
-<a class="card" href="recipes/gmb-chia-comfort-cup.html" data-title="the chia comfort cup" data-cat="gentle morning bites">
-  <div class="card-emoji">🌅</div>
+</a><a class="card" href="recipes/gmb-chia-comfort-cup.html" data-title="the chia comfort cup" data-cat="gentle morning bites">
+  <div class="card-thumb"><img src="images/gmb-chia-comfort-cup.jpg" alt="The Chia Comfort Cup" loading="lazy"></div>
   <div class="card-title">The Chia Comfort Cup</div>
   <div class="card-cat">Gentle Morning Bites</div>
-</a>
-<a class="card" href="recipes/gmb-cold-egg-salad-cups.html" data-title="cold egg salad breakfast cups" data-cat="gentle morning bites">
-  <div class="card-emoji">🌅</div>
+</a><a class="card" href="recipes/gmb-cold-egg-salad-cups.html" data-title="cold egg salad breakfast cups" data-cat="gentle morning bites">
+  <div class="card-thumb"><img src="images/gmb-cold-egg-salad-cups.jpg" alt="Cold Egg Salad Breakfast Cups" loading="lazy"></div>
   <div class="card-title">Cold Egg Salad Breakfast Cups</div>
   <div class="card-cat">Gentle Morning Bites</div>
-</a>
-<a class="card" href="recipes/gmb-frozen-yogurt-bark-bites.html" data-title="frozen yogurt bark bites" data-cat="gentle morning bites">
-  <div class="card-emoji">🌅</div>
+</a><a class="card" href="recipes/gmb-frozen-yogurt-bark-bites.html" data-title="frozen yogurt bark bites" data-cat="gentle morning bites">
+  <div class="card-thumb"><img src="images/gmb-frozen-yogurt-bark-bites.jpg" alt="Frozen Yogurt Bark Bites" loading="lazy"></div>
   <div class="card-title">Frozen Yogurt Bark Bites</div>
   <div class="card-cat">Gentle Morning Bites</div>
-</a>
-<a class="card" href="recipes/gmb-mini-meal-plate.html" data-title="the mini meal plate" data-cat="gentle morning bites">
-  <div class="card-emoji">🌅</div>
+</a><a class="card" href="recipes/gmb-mini-meal-plate.html" data-title="the mini meal plate" data-cat="gentle morning bites">
+  <div class="card-thumb"><img src="images/gmb-mini-meal-plate.jpg" alt="The Mini Meal Plate" loading="lazy"></div>
   <div class="card-title">The Mini Meal Plate</div>
   <div class="card-cat">Gentle Morning Bites</div>
-</a>
-<a class="card" href="recipes/gmb-snack-style-breakfast-box.html" data-title="snack-style breakfast box" data-cat="gentle morning bites">
-  <div class="card-emoji">🌅</div>
+</a><a class="card" href="recipes/gmb-snack-style-breakfast-box.html" data-title="snack-style breakfast box" data-cat="gentle morning bites">
+  <div class="card-thumb"><img src="images/gmb-snack-style-breakfast-box.jpg" alt="Snack-Style Breakfast Box" loading="lazy"></div>
   <div class="card-title">Snack-Style Breakfast Box</div>
   <div class="card-cat">Gentle Morning Bites</div>
-</a></div>
-</section>
-<section class="cat-section" data-cat="no-cook fiber meals">
+</a>
+  </div>
+  </section>
+  <section class="cat-section" data-cat="no-cook fiber meals">
   <h2 class="cat-heading">🌿 No-Cook Fiber Meals</h2>
-  <div class="card-grid"><a class="card" href="recipes/ncfm-gut-happy-yogurt-bowl.html" data-title="the gut-happy yogurt fiber bowl" data-cat="no-cook fiber meals">
-  <div class="card-emoji">🌿</div>
+  <div class="card-grid">
+<a class="card" href="recipes/ncfm-gut-happy-yogurt-bowl.html" data-title="the gut-happy yogurt fiber bowl" data-cat="no-cook fiber meals">
+  <div class="card-thumb"><img src="images/ncfm-gut-happy-yogurt-bowl.jpg" alt="The Gut-Happy Yogurt Fiber Bowl" loading="lazy"></div>
   <div class="card-title">The Gut-Happy Yogurt Fiber Bowl</div>
   <div class="card-cat">No-Cook Fiber Meals</div>
-</a>
-<a class="card" href="recipes/ncfm-pb-banana-oat-bowl.html" data-title="creamy pb banana oat bowl" data-cat="no-cook fiber meals">
-  <div class="card-emoji">🌿</div>
+</a><a class="card" href="recipes/ncfm-pb-banana-oat-bowl.html" data-title="creamy pb banana oat bowl" data-cat="no-cook fiber meals">
+  <div class="card-thumb"><img src="images/ncfm-pb-banana-oat-bowl.jpg" alt="Creamy PB Banana Oat Bowl" loading="lazy"></div>
   <div class="card-title">Creamy PB Banana Oat Bowl</div>
   <div class="card-cat">No-Cook Fiber Meals</div>
-</a>
-<a class="card" href="recipes/ncfm-avocado-chickpea-smash-toast.html" data-title="avocado chickpea smash toast" data-cat="no-cook fiber meals">
-  <div class="card-emoji">🌿</div>
+</a><a class="card" href="recipes/ncfm-avocado-chickpea-smash-toast.html" data-title="avocado chickpea smash toast" data-cat="no-cook fiber meals">
+  <div class="card-thumb"><img src="images/ncfm-avocado-chickpea-smash-toast.jpg" alt="Avocado Chickpea Smash Toast" loading="lazy"></div>
   <div class="card-title">Avocado Chickpea Smash Toast</div>
   <div class="card-cat">No-Cook Fiber Meals</div>
-</a>
-<a class="card" href="recipes/ncfm-lazy-bean-salad.html" data-title="the lazy bean salad" data-cat="no-cook fiber meals">
-  <div class="card-emoji">🌿</div>
+</a><a class="card" href="recipes/ncfm-lazy-bean-salad.html" data-title="the lazy bean salad" data-cat="no-cook fiber meals">
+  <div class="card-thumb"><img src="images/ncfm-lazy-bean-salad.jpg" alt="The Lazy Bean Salad" loading="lazy"></div>
   <div class="card-title">The Lazy Bean Salad</div>
   <div class="card-cat">No-Cook Fiber Meals</div>
-</a>
-<a class="card" href="recipes/ncfm-berry-almond-fiber-parfait.html" data-title="the berry almond fiber parfait" data-cat="no-cook fiber meals">
-  <div class="card-emoji">🌿</div>
+</a><a class="card" href="recipes/ncfm-berry-almond-fiber-parfait.html" data-title="the berry almond fiber parfait" data-cat="no-cook fiber meals">
+  <div class="card-thumb"><img src="images/ncfm-berry-almond-fiber-parfait.jpg" alt="The Berry Almond Fiber Parfait" loading="lazy"></div>
   <div class="card-title">The Berry Almond Fiber Parfait</div>
   <div class="card-cat">No-Cook Fiber Meals</div>
-</a>
-<a class="card" href="recipes/ncfm-mediterranean-hummus-plate.html" data-title="mediterranean hummus plate" data-cat="no-cook fiber meals">
-  <div class="card-emoji">🌿</div>
+</a><a class="card" href="recipes/ncfm-mediterranean-hummus-plate.html" data-title="mediterranean hummus plate" data-cat="no-cook fiber meals">
+  <div class="card-thumb"><img src="images/ncfm-mediterranean-hummus-plate.jpg" alt="Mediterranean Hummus Plate" loading="lazy"></div>
   <div class="card-title">Mediterranean Hummus Plate</div>
   <div class="card-cat">No-Cook Fiber Meals</div>
-</a>
-<a class="card" href="recipes/ncfm-apple-cinnamon-crunch-bowl.html" data-title="the apple cinnamon fiber crunch bowl" data-cat="no-cook fiber meals">
-  <div class="card-emoji">🌿</div>
+</a><a class="card" href="recipes/ncfm-apple-cinnamon-crunch-bowl.html" data-title="the apple cinnamon fiber crunch bowl" data-cat="no-cook fiber meals">
+  <div class="card-thumb"><img src="images/ncfm-apple-cinnamon-crunch-bowl.jpg" alt="The Apple Cinnamon Fiber Crunch Bowl" loading="lazy"></div>
   <div class="card-title">The Apple Cinnamon Fiber Crunch Bowl</div>
   <div class="card-cat">No-Cook Fiber Meals</div>
-</a>
-<a class="card" href="recipes/ncfm-5-minute-power-wrap.html" data-title="the 5-minute power wrap" data-cat="no-cook fiber meals">
-  <div class="card-emoji">🌿</div>
+</a><a class="card" href="recipes/ncfm-5-minute-power-wrap.html" data-title="the 5-minute power wrap" data-cat="no-cook fiber meals">
+  <div class="card-thumb"><img src="images/ncfm-5-minute-power-wrap.jpg" alt="The 5-Minute Power Wrap" loading="lazy"></div>
   <div class="card-title">The 5-Minute Power Wrap</div>
   <div class="card-cat">No-Cook Fiber Meals</div>
-</a>
-<a class="card" href="recipes/ncfm-savory-cottage-cheese-fiber-bowl.html" data-title="savory cottage cheese fiber bowl" data-cat="no-cook fiber meals">
-  <div class="card-emoji">🌿</div>
+</a><a class="card" href="recipes/ncfm-savory-cottage-cheese-fiber-bowl.html" data-title="savory cottage cheese fiber bowl" data-cat="no-cook fiber meals">
+  <div class="card-thumb"><img src="images/ncfm-savory-cottage-cheese-fiber-bowl.jpg" alt="Savory Cottage Cheese Fiber Bowl" loading="lazy"></div>
   <div class="card-title">Savory Cottage Cheese Fiber Bowl</div>
   <div class="card-cat">No-Cook Fiber Meals</div>
-</a>
-<a class="card" href="recipes/ncfm-senior-energy-trail-bowl.html" data-title="the senior energy trail bowl" data-cat="no-cook fiber meals">
-  <div class="card-emoji">🌿</div>
+</a><a class="card" href="recipes/ncfm-senior-energy-trail-bowl.html" data-title="the senior energy trail bowl" data-cat="no-cook fiber meals">
+  <div class="card-thumb"><img src="images/ncfm-senior-energy-trail-bowl.jpg" alt="The Senior Energy Trail Bowl" loading="lazy"></div>
   <div class="card-title">The Senior Energy Trail Bowl</div>
   <div class="card-cat">No-Cook Fiber Meals</div>
-</a>
-<a class="card" href="recipes/ncfm-quick-high-fiber-smoothie.html" data-title="the quick high-fiber smoothie" data-cat="no-cook fiber meals">
-  <div class="card-emoji">🌿</div>
+</a><a class="card" href="recipes/ncfm-quick-high-fiber-smoothie.html" data-title="the quick high-fiber smoothie" data-cat="no-cook fiber meals">
+  <div class="card-thumb"><img src="images/ncfm-quick-high-fiber-smoothie.jpg" alt="The Quick High-Fiber Smoothie" loading="lazy"></div>
   <div class="card-title">The Quick High-Fiber Smoothie</div>
   <div class="card-cat">No-Cook Fiber Meals</div>
-</a>
-<a class="card" href="recipes/ncfm-pantry-emergency-fiber-bowl.html" data-title="the pantry emergency fiber bowl" data-cat="no-cook fiber meals">
-  <div class="card-emoji">🌿</div>
+</a><a class="card" href="recipes/ncfm-pantry-emergency-fiber-bowl.html" data-title="the pantry emergency fiber bowl" data-cat="no-cook fiber meals">
+  <div class="card-thumb"><img src="images/ncfm-pantry-emergency-fiber-bowl.jpg" alt="The Pantry Emergency Fiber Bowl" loading="lazy"></div>
   <div class="card-title">The Pantry Emergency Fiber Bowl</div>
   <div class="card-cat">No-Cook Fiber Meals</div>
-</a></div>
-</section>
-<section class="cat-section" data-cat="high-protein breakfasts">
+</a>
+  </div>
+  </section>
+  <section class="cat-section" data-cat="high-protein breakfasts">
   <h2 class="cat-heading">💪 High-Protein Breakfasts</h2>
-  <div class="card-grid"><a class="card" href="recipes/shpb-sardines-avocado-cracker-plate.html" data-title="sardines & avocado cracker plate" data-cat="high-protein breakfasts">
-  <div class="card-emoji">💪</div>
+  <div class="card-grid">
+<a class="card" href="recipes/shpb-sardines-avocado-cracker-plate.html" data-title="sardines & avocado cracker plate" data-cat="high-protein breakfasts">
+  <div class="card-thumb"><img src="images/shpb-sardines-avocado-cracker-plate.jpg" alt="Sardines & Avocado Cracker Plate" loading="lazy"></div>
   <div class="card-title">Sardines & Avocado Cracker Plate</div>
   <div class="card-cat">High-Protein Breakfasts</div>
-</a>
-<a class="card" href="recipes/shpb-hardboiled-egg-hummus-plate.html" data-title="hardboiled egg & hummus plate" data-cat="high-protein breakfasts">
-  <div class="card-emoji">💪</div>
+</a><a class="card" href="recipes/shpb-hardboiled-egg-hummus-plate.html" data-title="hardboiled egg & hummus plate" data-cat="high-protein breakfasts">
+  <div class="card-thumb"><img src="images/shpb-hardboiled-egg-hummus-plate.jpg" alt="Hardboiled Egg & Hummus Plate" loading="lazy"></div>
   <div class="card-title">Hardboiled Egg & Hummus Plate</div>
   <div class="card-cat">High-Protein Breakfasts</div>
-</a>
-<a class="card" href="recipes/shpb-quick-overnight-oats.html" data-title="quick no-cook overnight oats" data-cat="high-protein breakfasts">
-  <div class="card-emoji">💪</div>
+</a><a class="card" href="recipes/shpb-quick-overnight-oats.html" data-title="quick no-cook overnight oats" data-cat="high-protein breakfasts">
+  <div class="card-thumb"><img src="images/shpb-quick-overnight-oats.jpg" alt="Quick No-Cook Overnight Oats" loading="lazy"></div>
   <div class="card-title">Quick No-Cook Overnight Oats</div>
   <div class="card-cat">High-Protein Breakfasts</div>
-</a>
-<a class="card" href="recipes/shpb-turkey-roll-ups-plate.html" data-title="turkey roll-ups plate" data-cat="high-protein breakfasts">
-  <div class="card-emoji">💪</div>
+</a><a class="card" href="recipes/shpb-turkey-roll-ups-plate.html" data-title="turkey roll-ups plate" data-cat="high-protein breakfasts">
+  <div class="card-thumb"><img src="images/shpb-turkey-roll-ups-plate.jpg" alt="Turkey Roll-Ups Plate" loading="lazy"></div>
   <div class="card-title">Turkey Roll-Ups Plate</div>
   <div class="card-cat">High-Protein Breakfasts</div>
-</a>
-<a class="card" href="recipes/shpb-apple-nut-butter-seeds.html" data-title="apple slices with nut butter & seeds" data-cat="high-protein breakfasts">
-  <div class="card-emoji">💪</div>
+</a><a class="card" href="recipes/shpb-apple-nut-butter-seeds.html" data-title="apple slices with nut butter & seeds" data-cat="high-protein breakfasts">
+  <div class="card-thumb"><img src="images/shpb-apple-nut-butter-seeds.jpg" alt="Apple Slices with Nut Butter & Seeds" loading="lazy"></div>
   <div class="card-title">Apple Slices with Nut Butter & Seeds</div>
   <div class="card-cat">High-Protein Breakfasts</div>
-</a>
-<a class="card" href="recipes/shpb-tofu-breakfast-bowl.html" data-title="tofu breakfast bowl" data-cat="high-protein breakfasts">
-  <div class="card-emoji">💪</div>
+</a><a class="card" href="recipes/shpb-tofu-breakfast-bowl.html" data-title="tofu breakfast bowl" data-cat="high-protein breakfasts">
+  <div class="card-thumb"><img src="images/shpb-tofu-breakfast-bowl.jpg" alt="Tofu Breakfast Bowl" loading="lazy"></div>
   <div class="card-title">Tofu Breakfast Bowl</div>
   <div class="card-cat">High-Protein Breakfasts</div>
-</a>
-<a class="card" href="recipes/shpb-cottage-cheese-alt-bowl.html" data-title="cottage cheese alternative bowl" data-cat="high-protein breakfasts">
-  <div class="card-emoji">💪</div>
+</a><a class="card" href="recipes/shpb-cottage-cheese-alt-bowl.html" data-title="cottage cheese alternative bowl" data-cat="high-protein breakfasts">
+  <div class="card-thumb"><img src="images/shpb-cottage-cheese-alt-bowl.jpg" alt="Cottage Cheese Alternative Bowl" loading="lazy"></div>
   <div class="card-title">Cottage Cheese Alternative Bowl</div>
   <div class="card-cat">High-Protein Breakfasts</div>
-</a>
-<a class="card" href="recipes/shpb-pb-toast-boiled-egg.html" data-title="peanut butter toast + boiled egg" data-cat="high-protein breakfasts">
-  <div class="card-emoji">💪</div>
+</a><a class="card" href="recipes/shpb-pb-toast-boiled-egg.html" data-title="peanut butter toast + boiled egg" data-cat="high-protein breakfasts">
+  <div class="card-thumb"><img src="images/shpb-pb-toast-boiled-egg.jpg" alt="Peanut Butter Toast + Boiled Egg" loading="lazy"></div>
   <div class="card-title">Peanut Butter Toast + Boiled Egg</div>
   <div class="card-cat">High-Protein Breakfasts</div>
-</a>
-<a class="card" href="recipes/shpb-tuna-salad-bowl-no-mayo.html" data-title="tuna salad bowl (no mayo)" data-cat="high-protein breakfasts">
-  <div class="card-emoji">💪</div>
+</a><a class="card" href="recipes/shpb-tuna-salad-bowl-no-mayo.html" data-title="tuna salad bowl (no mayo)" data-cat="high-protein breakfasts">
+  <div class="card-thumb"><img src="images/shpb-tuna-salad-bowl-no-mayo.jpg" alt="Tuna Salad Bowl (No Mayo)" loading="lazy"></div>
   <div class="card-title">Tuna Salad Bowl (No Mayo)</div>
   <div class="card-cat">High-Protein Breakfasts</div>
-</a>
-<a class="card" href="recipes/shpb-mixed-nuts-seeds-power-bowl.html" data-title="mixed nuts & seeds power bowl" data-cat="high-protein breakfasts">
-  <div class="card-emoji">💪</div>
+</a><a class="card" href="recipes/shpb-mixed-nuts-seeds-power-bowl.html" data-title="mixed nuts & seeds power bowl" data-cat="high-protein breakfasts">
+  <div class="card-thumb"><img src="images/shpb-mixed-nuts-seeds-power-bowl.jpg" alt="Mixed Nuts & Seeds Power Bowl" loading="lazy"></div>
   <div class="card-title">Mixed Nuts & Seeds Power Bowl</div>
   <div class="card-cat">High-Protein Breakfasts</div>
-</a>
-<a class="card" href="recipes/shpb-simple-bean-avocado-bowl.html" data-title="simple bean & avocado bowl" data-cat="high-protein breakfasts">
-  <div class="card-emoji">💪</div>
+</a><a class="card" href="recipes/shpb-simple-bean-avocado-bowl.html" data-title="simple bean & avocado bowl" data-cat="high-protein breakfasts">
+  <div class="card-thumb"><img src="images/shpb-simple-bean-avocado-bowl.jpg" alt="Simple Bean & Avocado Bowl" loading="lazy"></div>
   <div class="card-title">Simple Bean & Avocado Bowl</div>
   <div class="card-cat">High-Protein Breakfasts</div>
-</a></div>
-</section>
-<section class="cat-section" data-cat="morning protein">
+</a>
+  </div>
+  </section>
+  <section class="cat-section" data-cat="morning protein">
   <h2 class="cat-heading">🌄 Morning Protein</h2>
-  <div class="card-grid"><a class="card" href="recipes/smp-sardines-avocado-plate.html" data-title="sardines and avocado plate" data-cat="morning protein">
-  <div class="card-emoji">🌄</div>
+  <div class="card-grid">
+<a class="card" href="recipes/smp-sardines-avocado-plate.html" data-title="sardines and avocado plate" data-cat="morning protein">
+  <div class="card-thumb"><img src="images/smp-sardines-avocado-plate.jpg" alt="Sardines and Avocado Plate" loading="lazy"></div>
   <div class="card-title">Sardines and Avocado Plate</div>
   <div class="card-cat">Morning Protein</div>
-</a>
-<a class="card" href="recipes/smp-egg-hummus-plate.html" data-title="the egg & hummus plate" data-cat="morning protein">
-  <div class="card-emoji">🌄</div>
+</a><a class="card" href="recipes/smp-egg-hummus-plate.html" data-title="the egg & hummus plate" data-cat="morning protein">
+  <div class="card-thumb"><img src="images/smp-egg-hummus-plate.jpg" alt="The Egg & Hummus Plate" loading="lazy"></div>
   <div class="card-title">The Egg & Hummus Plate</div>
   <div class="card-cat">Morning Protein</div>
-</a>
-<a class="card" href="recipes/smp-quick-overnight-oats.html" data-title="quick overnight oats" data-cat="morning protein">
-  <div class="card-emoji">🌄</div>
+</a><a class="card" href="recipes/smp-quick-overnight-oats.html" data-title="quick overnight oats" data-cat="morning protein">
+  <div class="card-thumb"><img src="images/smp-quick-overnight-oats.jpg" alt="Quick Overnight Oats" loading="lazy"></div>
   <div class="card-title">Quick Overnight Oats</div>
   <div class="card-cat">Morning Protein</div>
-</a>
-<a class="card" href="recipes/smp-turkey-rollups.html" data-title="turkey rollups" data-cat="morning protein">
-  <div class="card-emoji">🌄</div>
+</a><a class="card" href="recipes/smp-turkey-rollups.html" data-title="turkey rollups" data-cat="morning protein">
+  <div class="card-thumb"><img src="images/smp-turkey-rollups.jpg" alt="Turkey Rollups" loading="lazy"></div>
   <div class="card-title">Turkey Rollups</div>
   <div class="card-cat">Morning Protein</div>
-</a>
-<a class="card" href="recipes/smp-apple-nut-butter.html" data-title="apple & nut butter" data-cat="morning protein">
-  <div class="card-emoji">🌄</div>
+</a><a class="card" href="recipes/smp-apple-nut-butter.html" data-title="apple & nut butter" data-cat="morning protein">
+  <div class="card-thumb"><img src="images/smp-apple-nut-butter.jpg" alt="Apple & Nut Butter" loading="lazy"></div>
   <div class="card-title">Apple & Nut Butter</div>
   <div class="card-cat">Morning Protein</div>
-</a>
-<a class="card" href="recipes/smp-savory-tofu-bowl.html" data-title="savory tofu bowl" data-cat="morning protein">
-  <div class="card-emoji">🌄</div>
+</a><a class="card" href="recipes/smp-savory-tofu-bowl.html" data-title="savory tofu bowl" data-cat="morning protein">
+  <div class="card-thumb"><img src="images/smp-savory-tofu-bowl.jpg" alt="Savory Tofu Bowl" loading="lazy"></div>
   <div class="card-title">Savory Tofu Bowl</div>
   <div class="card-cat">Morning Protein</div>
-</a>
-<a class="card" href="recipes/smp-cottage-cheese-alt-bowl.html" data-title="cottage cheese alternative bowl" data-cat="morning protein">
-  <div class="card-emoji">🌄</div>
+</a><a class="card" href="recipes/smp-cottage-cheese-alt-bowl.html" data-title="cottage cheese alternative bowl" data-cat="morning protein">
+  <div class="card-thumb"><img src="images/smp-cottage-cheese-alt-bowl.jpg" alt="Cottage Cheese Alternative Bowl" loading="lazy"></div>
   <div class="card-title">Cottage Cheese Alternative Bowl</div>
   <div class="card-cat">Morning Protein</div>
-</a>
-<a class="card" href="recipes/smp-pb-toast-egg.html" data-title="peanut butter toast & egg" data-cat="morning protein">
-  <div class="card-emoji">🌄</div>
+</a><a class="card" href="recipes/smp-pb-toast-egg.html" data-title="peanut butter toast & egg" data-cat="morning protein">
+  <div class="card-thumb"><img src="images/smp-pb-toast-egg.jpg" alt="Peanut Butter Toast & Egg" loading="lazy"></div>
   <div class="card-title">Peanut Butter Toast & Egg</div>
   <div class="card-cat">Morning Protein</div>
-</a>
-<a class="card" href="recipes/smp-mayo-free-tuna-salad.html" data-title="mayo-free tuna salad" data-cat="morning protein">
-  <div class="card-emoji">🌄</div>
+</a><a class="card" href="recipes/smp-mayo-free-tuna-salad.html" data-title="mayo-free tuna salad" data-cat="morning protein">
+  <div class="card-thumb"><img src="images/smp-mayo-free-tuna-salad.jpg" alt="Mayo-Free Tuna Salad" loading="lazy"></div>
   <div class="card-title">Mayo-Free Tuna Salad</div>
   <div class="card-cat">Morning Protein</div>
-</a>
-<a class="card" href="recipes/smp-nuts-seeds-power-bowl.html" data-title="nuts & seeds power bowl" data-cat="morning protein">
-  <div class="card-emoji">🌄</div>
+</a><a class="card" href="recipes/smp-nuts-seeds-power-bowl.html" data-title="nuts & seeds power bowl" data-cat="morning protein">
+  <div class="card-thumb"><img src="images/smp-nuts-seeds-power-bowl.jpg" alt="Nuts & Seeds Power Bowl" loading="lazy"></div>
   <div class="card-title">Nuts & Seeds Power Bowl</div>
   <div class="card-cat">Morning Protein</div>
-</a>
-<a class="card" href="recipes/smp-simple-bean-avocado-bowl.html" data-title="simple bean & avocado bowl" data-cat="morning protein">
-  <div class="card-emoji">🌄</div>
+</a><a class="card" href="recipes/smp-simple-bean-avocado-bowl.html" data-title="simple bean & avocado bowl" data-cat="morning protein">
+  <div class="card-thumb"><img src="images/smp-simple-bean-avocado-bowl.jpg" alt="Simple Bean & Avocado Bowl" loading="lazy"></div>
   <div class="card-title">Simple Bean & Avocado Bowl</div>
   <div class="card-cat">Morning Protein</div>
-</a></div>
-</section>
-<section class="cat-section" data-cat="one-pan meals">
+</a>
+  </div>
+  </section>
+  <section class="cat-section" data-cat="one-pan meals">
   <h2 class="cat-heading">🍳 One-Pan Meals</h2>
-  <div class="card-grid"><a class="card" href="recipes/sopm-egg-vegetable-scramble.html" data-title="egg & vegetable scramble" data-cat="one-pan meals">
-  <div class="card-emoji">🍳</div>
+  <div class="card-grid">
+<a class="card" href="recipes/sopm-egg-vegetable-scramble.html" data-title="egg & vegetable scramble" data-cat="one-pan meals">
+  <div class="card-thumb"><img src="images/sopm-egg-vegetable-scramble.jpg" alt="Egg & Vegetable Scramble" loading="lazy"></div>
   <div class="card-title">Egg & Vegetable Scramble</div>
   <div class="card-cat">One-Pan Meals</div>
-</a>
-<a class="card" href="recipes/sopm-shrimp-garlic-pan.html" data-title="shrimp & garlic pan" data-cat="one-pan meals">
-  <div class="card-emoji">🍳</div>
+</a><a class="card" href="recipes/sopm-shrimp-garlic-pan.html" data-title="shrimp & garlic pan" data-cat="one-pan meals">
+  <div class="card-thumb"><img src="images/sopm-shrimp-garlic-pan.jpg" alt="Shrimp & Garlic Pan" loading="lazy"></div>
   <div class="card-title">Shrimp & Garlic Pan</div>
   <div class="card-cat">One-Pan Meals</div>
-</a>
-<a class="card" href="recipes/sopm-garlic-chicken-veggie-skillet.html" data-title="garlic chicken & soft veggie skillet" data-cat="one-pan meals">
-  <div class="card-emoji">🍳</div>
+</a><a class="card" href="recipes/sopm-garlic-chicken-veggie-skillet.html" data-title="garlic chicken & soft veggie skillet" data-cat="one-pan meals">
+  <div class="card-thumb"><img src="images/sopm-garlic-chicken-veggie-skillet.jpg" alt="Garlic Chicken & Soft Veggie Skillet" loading="lazy"></div>
   <div class="card-title">Garlic Chicken & Soft Veggie Skillet</div>
   <div class="card-cat">One-Pan Meals</div>
-</a>
-<a class="card" href="recipes/sopm-lazy-salmon-green-beans.html" data-title="lazy salmon & green beans" data-cat="one-pan meals">
-  <div class="card-emoji">🍳</div>
+</a><a class="card" href="recipes/sopm-lazy-salmon-green-beans.html" data-title="lazy salmon & green beans" data-cat="one-pan meals">
+  <div class="card-thumb"><img src="images/sopm-lazy-salmon-green-beans.jpg" alt="Lazy Salmon & Green Beans" loading="lazy"></div>
   <div class="card-title">Lazy Salmon & Green Beans</div>
   <div class="card-cat">One-Pan Meals</div>
-</a>
-<a class="card" href="recipes/sopm-ground-turkey-cabbage-stir.html" data-title="ground turkey & cabbage stir" data-cat="one-pan meals">
-  <div class="card-emoji">🍳</div>
+</a><a class="card" href="recipes/sopm-ground-turkey-cabbage-stir.html" data-title="ground turkey & cabbage stir" data-cat="one-pan meals">
+  <div class="card-thumb"><img src="images/sopm-ground-turkey-cabbage-stir.jpg" alt="Ground Turkey & Cabbage Stir" loading="lazy"></div>
   <div class="card-title">Ground Turkey & Cabbage Stir</div>
   <div class="card-cat">One-Pan Meals</div>
-</a>
-<a class="card" href="recipes/sopm-lentil-veg-stew.html" data-title="one-pan lentil & veg stew" data-cat="one-pan meals">
-  <div class="card-emoji">🍳</div>
+</a><a class="card" href="recipes/sopm-lentil-veg-stew.html" data-title="one-pan lentil & veg stew" data-cat="one-pan meals">
+  <div class="card-thumb"><img src="images/sopm-lentil-veg-stew.jpg" alt="One-Pan Lentil & Veg Stew" loading="lazy"></div>
   <div class="card-title">One-Pan Lentil & Veg Stew</div>
   <div class="card-cat">One-Pan Meals</div>
-</a>
-<a class="card" href="recipes/sopm-eggplant-chickpea-stew.html" data-title="eggplant & chickpea stew" data-cat="one-pan meals">
-  <div class="card-emoji">🍳</div>
+</a><a class="card" href="recipes/sopm-eggplant-chickpea-stew.html" data-title="eggplant & chickpea stew" data-cat="one-pan meals">
+  <div class="card-thumb"><img src="images/sopm-eggplant-chickpea-stew.jpg" alt="Eggplant & Chickpea Stew" loading="lazy"></div>
   <div class="card-title">Eggplant & Chickpea Stew</div>
   <div class="card-cat">One-Pan Meals</div>
-</a>
-<a class="card" href="recipes/sopm-sardine-tomato-skillet.html" data-title="sardine & tomato warm skillet" data-cat="one-pan meals">
-  <div class="card-emoji">🍳</div>
+</a><a class="card" href="recipes/sopm-sardine-tomato-skillet.html" data-title="sardine & tomato warm skillet" data-cat="one-pan meals">
+  <div class="card-thumb"><img src="images/sopm-sardine-tomato-skillet.jpg" alt="Sardine & Tomato Warm Skillet" loading="lazy"></div>
   <div class="card-title">Sardine & Tomato Warm Skillet</div>
   <div class="card-cat">One-Pan Meals</div>
-</a>
-<a class="card" href="recipes/sopm-chicken-sweet-potato-hash.html" data-title="chicken & sweet potato hash" data-cat="one-pan meals">
-  <div class="card-emoji">🍳</div>
+</a><a class="card" href="recipes/sopm-chicken-sweet-potato-hash.html" data-title="chicken & sweet potato hash" data-cat="one-pan meals">
+  <div class="card-thumb"><img src="images/sopm-chicken-sweet-potato-hash.jpg" alt="Chicken & Sweet Potato Hash" loading="lazy"></div>
   <div class="card-title">Chicken & Sweet Potato Hash</div>
   <div class="card-cat">One-Pan Meals</div>
-</a>
-<a class="card" href="recipes/sopm-beef-zucchini-pan.html" data-title="one-pan beef & zucchini" data-cat="one-pan meals">
-  <div class="card-emoji">🍳</div>
+</a><a class="card" href="recipes/sopm-beef-zucchini-pan.html" data-title="one-pan beef & zucchini" data-cat="one-pan meals">
+  <div class="card-thumb"><img src="images/sopm-beef-zucchini-pan.jpg" alt="One-Pan Beef & Zucchini" loading="lazy"></div>
   <div class="card-title">One-Pan Beef & Zucchini</div>
   <div class="card-cat">One-Pan Meals</div>
-</a>
-<a class="card" href="recipes/sopm-chicken-mushroom-gravy.html" data-title="chicken & mushroom gravy" data-cat="one-pan meals">
-  <div class="card-emoji">🍳</div>
+</a><a class="card" href="recipes/sopm-chicken-mushroom-gravy.html" data-title="chicken & mushroom gravy" data-cat="one-pan meals">
+  <div class="card-thumb"><img src="images/sopm-chicken-mushroom-gravy.jpg" alt="Chicken & Mushroom Gravy" loading="lazy"></div>
   <div class="card-title">Chicken & Mushroom Gravy</div>
   <div class="card-cat">One-Pan Meals</div>
-</a></div>
-</section>
-<section class="cat-section" data-cat="single pan supper">
+</a>
+  </div>
+  </section>
+  <section class="cat-section" data-cat="single pan supper">
   <h2 class="cat-heading">🫕 Single Pan Supper</h2>
-  <div class="card-grid"><a class="card" href="recipes/spsu-chicken-veggie-bake.html" data-title="chicken & veggie bake" data-cat="single pan supper">
-  <div class="card-emoji">🫕</div>
+  <div class="card-grid">
+<a class="card" href="recipes/spsu-chicken-veggie-bake.html" data-title="chicken & veggie bake" data-cat="single pan supper">
+  <div class="card-thumb"><img src="images/spsu-chicken-veggie-bake.jpg" alt="Chicken & Veggie Bake" loading="lazy"></div>
   <div class="card-title">Chicken & Veggie Bake</div>
   <div class="card-cat">Single Pan Supper</div>
-</a>
-<a class="card" href="recipes/spsu-honey-garlic-salmon-broccoli.html" data-title="honey garlic salmon & broccoli" data-cat="single pan supper">
-  <div class="card-emoji">🫕</div>
+</a><a class="card" href="recipes/spsu-honey-garlic-salmon-broccoli.html" data-title="honey garlic salmon & broccoli" data-cat="single pan supper">
+  <div class="card-thumb"><img src="images/spsu-honey-garlic-salmon-broccoli.jpg" alt="Honey Garlic Salmon & Broccoli" loading="lazy"></div>
   <div class="card-title">Honey Garlic Salmon & Broccoli</div>
   <div class="card-cat">Single Pan Supper</div>
-</a>
-<a class="card" href="recipes/spsu-sausage-cabbage-apple-roast.html" data-title="sausage, cabbage & apple roast" data-cat="single pan supper">
-  <div class="card-emoji">🫕</div>
+</a><a class="card" href="recipes/spsu-sausage-cabbage-apple-roast.html" data-title="sausage, cabbage & apple roast" data-cat="single pan supper">
+  <div class="card-thumb"><img src="images/spsu-sausage-cabbage-apple-roast.jpg" alt="Sausage, Cabbage & Apple Roast" loading="lazy"></div>
   <div class="card-title">Sausage, Cabbage & Apple Roast</div>
   <div class="card-cat">Single Pan Supper</div>
-</a>
-<a class="card" href="recipes/spsu-lemon-herb-tilapia-green-beans.html" data-title="lemon herb tilapia & green beans" data-cat="single pan supper">
-  <div class="card-emoji">🫕</div>
+</a><a class="card" href="recipes/spsu-lemon-herb-tilapia-green-beans.html" data-title="lemon herb tilapia & green beans" data-cat="single pan supper">
+  <div class="card-thumb"><img src="images/spsu-lemon-herb-tilapia-green-beans.jpg" alt="Lemon Herb Tilapia & Green Beans" loading="lazy"></div>
   <div class="card-title">Lemon Herb Tilapia & Green Beans</div>
   <div class="card-cat">Single Pan Supper</div>
-</a>
-<a class="card" href="recipes/spsu-lazy-turkey-cabbage-roll.html" data-title="lazy ground turkey cabbage roll" data-cat="single pan supper">
-  <div class="card-emoji">🫕</div>
+</a><a class="card" href="recipes/spsu-lazy-turkey-cabbage-roll.html" data-title="lazy ground turkey cabbage roll" data-cat="single pan supper">
+  <div class="card-thumb"><img src="images/spsu-lazy-turkey-cabbage-roll.jpg" alt="Lazy Ground Turkey Cabbage Roll" loading="lazy"></div>
   <div class="card-title">Lazy Ground Turkey Cabbage Roll</div>
   <div class="card-cat">Single Pan Supper</div>
-</a>
-<a class="card" href="recipes/spsu-shrimp-veggie-stir-fry.html" data-title="shrimp & veggie stir fry" data-cat="single pan supper">
-  <div class="card-emoji">🫕</div>
+</a><a class="card" href="recipes/spsu-shrimp-veggie-stir-fry.html" data-title="shrimp & veggie stir fry" data-cat="single pan supper">
+  <div class="card-thumb"><img src="images/spsu-shrimp-veggie-stir-fry.jpg" alt="Shrimp & Veggie Stir Fry" loading="lazy"></div>
   <div class="card-title">Shrimp & Veggie Stir Fry</div>
   <div class="card-cat">Single Pan Supper</div>
-</a>
-<a class="card" href="recipes/spsu-sweet-potato-black-bean-bowl.html" data-title="sweet potato & black bean fiesta bowl" data-cat="single pan supper">
-  <div class="card-emoji">🫕</div>
+</a><a class="card" href="recipes/spsu-sweet-potato-black-bean-bowl.html" data-title="sweet potato & black bean fiesta bowl" data-cat="single pan supper">
+  <div class="card-thumb"><img src="images/spsu-sweet-potato-black-bean-bowl.jpg" alt="Sweet Potato & Black Bean Fiesta Bowl" loading="lazy"></div>
   <div class="card-title">Sweet Potato & Black Bean Fiesta Bowl</div>
   <div class="card-cat">Single Pan Supper</div>
-</a>
-<a class="card" href="recipes/spsu-one-pan-pasta-primavera.html" data-title="one-pan pasta primavera" data-cat="single pan supper">
-  <div class="card-emoji">🫕</div>
+</a><a class="card" href="recipes/spsu-one-pan-pasta-primavera.html" data-title="one-pan pasta primavera" data-cat="single pan supper">
+  <div class="card-thumb"><img src="images/spsu-one-pan-pasta-primavera.jpg" alt="One-Pan Pasta Primavera" loading="lazy"></div>
   <div class="card-title">One-Pan Pasta Primavera</div>
   <div class="card-cat">Single Pan Supper</div>
-</a>
-<a class="card" href="recipes/spsu-mediterranean-chicken.html" data-title="mediterranean chicken with olives" data-cat="single pan supper">
-  <div class="card-emoji">🫕</div>
+</a><a class="card" href="recipes/spsu-mediterranean-chicken.html" data-title="mediterranean chicken with olives" data-cat="single pan supper">
+  <div class="card-thumb"><img src="images/spsu-mediterranean-chicken.jpg" alt="Mediterranean Chicken with Olives" loading="lazy"></div>
   <div class="card-title">Mediterranean Chicken with Olives</div>
   <div class="card-cat">Single Pan Supper</div>
-</a>
-<a class="card" href="recipes/spsu-baked-egg-frittata.html" data-title="baked egg frittata" data-cat="single pan supper">
-  <div class="card-emoji">🫕</div>
+</a><a class="card" href="recipes/spsu-baked-egg-frittata.html" data-title="baked egg frittata" data-cat="single pan supper">
+  <div class="card-thumb"><img src="images/spsu-baked-egg-frittata.jpg" alt="Baked Egg Frittata" loading="lazy"></div>
   <div class="card-title">Baked Egg Frittata</div>
   <div class="card-cat">Single Pan Supper</div>
-</a></div>
-</section>
-<section class="cat-section" data-cat="tofu simplified">
+</a>
+  </div>
+  </section>
+  <section class="cat-section" data-cat="tofu simplified">
   <h2 class="cat-heading">🌱 Tofu Simplified</h2>
-  <div class="card-grid"><a class="card" href="recipes/tofu-savory-scramble.html" data-title="savory tofu scramble" data-cat="tofu simplified">
-  <div class="card-emoji">🌱</div>
+  <div class="card-grid">
+<a class="card" href="recipes/tofu-savory-scramble.html" data-title="savory tofu scramble" data-cat="tofu simplified">
+  <div class="card-thumb"><img src="images/tofu-savory-scramble.jpg" alt="Savory Tofu Scramble" loading="lazy"></div>
   <div class="card-title">Savory Tofu Scramble</div>
   <div class="card-cat">Tofu Simplified</div>
-</a>
-<a class="card" href="recipes/tofu-tomato-braised.html" data-title="tomato braised tofu" data-cat="tofu simplified">
-  <div class="card-emoji">🌱</div>
+</a><a class="card" href="recipes/tofu-tomato-braised.html" data-title="tomato braised tofu" data-cat="tofu simplified">
+  <div class="card-thumb"><img src="images/tofu-tomato-braised.jpg" alt="Tomato Braised Tofu" loading="lazy"></div>
   <div class="card-title">Tomato Braised Tofu</div>
   <div class="card-cat">Tofu Simplified</div>
-</a>
-<a class="card" href="recipes/tofu-light-onion-gravy.html" data-title="light onion gravy tofu" data-cat="tofu simplified">
-  <div class="card-emoji">🌱</div>
+</a><a class="card" href="recipes/tofu-light-onion-gravy.html" data-title="light onion gravy tofu" data-cat="tofu simplified">
+  <div class="card-thumb"><img src="images/tofu-light-onion-gravy.jpg" alt="Light Onion Gravy Tofu" loading="lazy"></div>
   <div class="card-title">Light Onion Gravy Tofu</div>
   <div class="card-cat">Tofu Simplified</div>
-</a>
-<a class="card" href="recipes/tofu-soft-vegetable-soup.html" data-title="soft tofu vegetable soup" data-cat="tofu simplified">
-  <div class="card-emoji">🌱</div>
+</a><a class="card" href="recipes/tofu-soft-vegetable-soup.html" data-title="soft tofu vegetable soup" data-cat="tofu simplified">
+  <div class="card-thumb"><img src="images/tofu-soft-vegetable-soup.jpg" alt="Soft Tofu Vegetable Soup" loading="lazy"></div>
   <div class="card-title">Soft Tofu Vegetable Soup</div>
   <div class="card-cat">Tofu Simplified</div>
-</a>
-<a class="card" href="recipes/tofu-pan-seared-pepper-herbs.html" data-title="pan-seared tofu with pepper & herbs" data-cat="tofu simplified">
-  <div class="card-emoji">🌱</div>
+</a><a class="card" href="recipes/tofu-pan-seared-pepper-herbs.html" data-title="pan-seared tofu with pepper & herbs" data-cat="tofu simplified">
+  <div class="card-thumb"><img src="images/tofu-pan-seared-pepper-herbs.jpg" alt="Pan-Seared Tofu with Pepper & Herbs" loading="lazy"></div>
   <div class="card-title">Pan-Seared Tofu with Pepper & Herbs</div>
   <div class="card-cat">Tofu Simplified</div>
-</a>
-<a class="card" href="recipes/tofu-mashed-potatoes-gravy.html" data-title="tofu with mashed potatoes & gravy" data-cat="tofu simplified">
-  <div class="card-emoji">🌱</div>
+</a><a class="card" href="recipes/tofu-mashed-potatoes-gravy.html" data-title="tofu with mashed potatoes & gravy" data-cat="tofu simplified">
+  <div class="card-thumb"><img src="images/tofu-mashed-potatoes-gravy.jpg" alt="Tofu with Mashed Potatoes & Gravy" loading="lazy"></div>
   <div class="card-title">Tofu with Mashed Potatoes & Gravy</div>
   <div class="card-cat">Tofu Simplified</div>
-</a>
-<a class="card" href="recipes/tofu-ginger-soy.html" data-title="ginger soy tofu" data-cat="tofu simplified">
-  <div class="card-emoji">🌱</div>
+</a><a class="card" href="recipes/tofu-ginger-soy.html" data-title="ginger soy tofu" data-cat="tofu simplified">
+  <div class="card-thumb"><img src="images/tofu-ginger-soy.jpg" alt="Ginger Soy Tofu" loading="lazy"></div>
   <div class="card-title">Ginger Soy Tofu</div>
   <div class="card-cat">Tofu Simplified</div>
-</a>
-<a class="card" href="recipes/tofu-rice-comfort-bowl.html" data-title="tofu and rice comfort bowl" data-cat="tofu simplified">
-  <div class="card-emoji">🌱</div>
+</a><a class="card" href="recipes/tofu-rice-comfort-bowl.html" data-title="tofu and rice comfort bowl" data-cat="tofu simplified">
+  <div class="card-thumb"><img src="images/tofu-rice-comfort-bowl.jpg" alt="Tofu and Rice Comfort Bowl" loading="lazy"></div>
   <div class="card-title">Tofu and Rice Comfort Bowl</div>
   <div class="card-cat">Tofu Simplified</div>
-</a>
-<a class="card" href="recipes/tofu-creamy-savory.html" data-title="creamy savory tofu" data-cat="tofu simplified">
-  <div class="card-emoji">🌱</div>
+</a><a class="card" href="recipes/tofu-creamy-savory.html" data-title="creamy savory tofu" data-cat="tofu simplified">
+  <div class="card-thumb"><img src="images/tofu-creamy-savory.jpg" alt="Creamy Savory Tofu" loading="lazy"></div>
   <div class="card-title">Creamy Savory Tofu</div>
   <div class="card-cat">Tofu Simplified</div>
-</a>
-<a class="card" href="recipes/tofu-cabbage-stir.html" data-title="cabbage and tofu stir" data-cat="tofu simplified">
-  <div class="card-emoji">🌱</div>
+</a><a class="card" href="recipes/tofu-cabbage-stir.html" data-title="cabbage and tofu stir" data-cat="tofu simplified">
+  <div class="card-thumb"><img src="images/tofu-cabbage-stir.jpg" alt="Cabbage and Tofu Stir" loading="lazy"></div>
   <div class="card-title">Cabbage and Tofu Stir</div>
   <div class="card-cat">Tofu Simplified</div>
-</a>
-<a class="card" href="recipes/tofu-garlic-soy-bowl.html" data-title="the garlic soy bowl" data-cat="tofu simplified">
-  <div class="card-emoji">🌱</div>
+</a><a class="card" href="recipes/tofu-garlic-soy-bowl.html" data-title="the garlic soy bowl" data-cat="tofu simplified">
+  <div class="card-thumb"><img src="images/tofu-garlic-soy-bowl.jpg" alt="The Garlic Soy Bowl" loading="lazy"></div>
   <div class="card-title">The Garlic Soy Bowl</div>
   <div class="card-cat">Tofu Simplified</div>
-</a>
-<a class="card" href="recipes/tofu-no-energy-savory-bowl.html" data-title="the no-energy savory bowl" data-cat="tofu simplified">
-  <div class="card-emoji">🌱</div>
+</a><a class="card" href="recipes/tofu-no-energy-savory-bowl.html" data-title="the no-energy savory bowl" data-cat="tofu simplified">
+  <div class="card-thumb"><img src="images/tofu-no-energy-savory-bowl.jpg" alt="The No-Energy Savory Bowl" loading="lazy"></div>
   <div class="card-title">The No-Energy Savory Bowl</div>
   <div class="card-cat">Tofu Simplified</div>
-</a>
-<a class="card" href="recipes/tofu-avocado-savory-mash.html" data-title="tofu & avocado savory mash" data-cat="tofu simplified">
-  <div class="card-emoji">🌱</div>
+</a><a class="card" href="recipes/tofu-avocado-savory-mash.html" data-title="tofu & avocado savory mash" data-cat="tofu simplified">
+  <div class="card-thumb"><img src="images/tofu-avocado-savory-mash.jpg" alt="Tofu & Avocado Savory Mash" loading="lazy"></div>
   <div class="card-title">Tofu & Avocado Savory Mash</div>
   <div class="card-cat">Tofu Simplified</div>
-</a>
-<a class="card" href="recipes/tofu-berry-smoothie-bowl.html" data-title="tofu & berry smoothie bowl" data-cat="tofu simplified">
-  <div class="card-emoji">🌱</div>
+</a><a class="card" href="recipes/tofu-berry-smoothie-bowl.html" data-title="tofu & berry smoothie bowl" data-cat="tofu simplified">
+  <div class="card-thumb"><img src="images/tofu-berry-smoothie-bowl.jpg" alt="Tofu & Berry Smoothie Bowl" loading="lazy"></div>
   <div class="card-title">Tofu & Berry Smoothie Bowl</div>
   <div class="card-cat">Tofu Simplified</div>
-</a>
-<a class="card" href="recipes/tofu-bok-choy-pan.html" data-title="tofu & bok choy pan" data-cat="tofu simplified">
-  <div class="card-emoji">🌱</div>
+</a><a class="card" href="recipes/tofu-bok-choy-pan.html" data-title="tofu & bok choy pan" data-cat="tofu simplified">
+  <div class="card-thumb"><img src="images/tofu-bok-choy-pan.jpg" alt="Tofu & Bok Choy Pan" loading="lazy"></div>
   <div class="card-title">Tofu & Bok Choy Pan</div>
   <div class="card-cat">Tofu Simplified</div>
-</a>
-<a class="card" href="recipes/tofu-spinach-scramble.html" data-title="tofu & spinach scramble" data-cat="tofu simplified">
-  <div class="card-emoji">🌱</div>
+</a><a class="card" href="recipes/tofu-spinach-scramble.html" data-title="tofu & spinach scramble" data-cat="tofu simplified">
+  <div class="card-thumb"><img src="images/tofu-spinach-scramble.jpg" alt="Tofu & Spinach Scramble" loading="lazy"></div>
   <div class="card-title">Tofu & Spinach Scramble</div>
   <div class="card-cat">Tofu Simplified</div>
-</a>
-<a class="card" href="recipes/tofu-warm-lentil-bowl.html" data-title="warm tofu & lentil bowl" data-cat="tofu simplified">
-  <div class="card-emoji">🌱</div>
+</a><a class="card" href="recipes/tofu-warm-lentil-bowl.html" data-title="warm tofu & lentil bowl" data-cat="tofu simplified">
+  <div class="card-thumb"><img src="images/tofu-warm-lentil-bowl.jpg" alt="Warm Tofu & Lentil Bowl" loading="lazy"></div>
   <div class="card-title">Warm Tofu & Lentil Bowl</div>
   <div class="card-cat">Tofu Simplified</div>
-</a></div>
-</section>
-
+</a>
+  </div>
+  </section>
   <div class="no-results" id="no-results">No recipes found. Try a different word.</div>
 </div>
 <footer>107 recipes · All simple, healthy and designed for one person</footer>
 <script>
+
 const search = document.getElementById('search');
 const cards = Array.from(document.querySelectorAll('.card'));
 const sections = Array.from(document.querySelectorAll('.cat-section'));
@@ -634,6 +599,7 @@ search.addEventListener('input', () => {
   });
   noResults.style.display = visible === 0 ? 'block' : 'none';
 });
+
 </script>
 </body>
 </html>
