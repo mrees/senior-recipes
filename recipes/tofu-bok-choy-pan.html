@@ -84,6 +84,37 @@ footer {
   background: #2C3E50; color: rgba(255,255,255,.6);
   text-align: center; padding: 20px; font-size: .8rem; margin-top: 60px;
 }
+
+.recipe-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 860px;
+  margin: 32px auto 0;
+  padding: 16px 24px;
+  border-top: 2px solid var(--border);
+  font-family: Arial, sans-serif;
+  font-size: 0.85em;
+  gap: 12px;
+}
+.recipe-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--green);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 14px;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  transition: background .15s, border-color .15s;
+  max-width: 44%;
+}
+.recipe-nav a:hover { background: var(--light-green); border-color: var(--green); }
+.recipe-nav .nav-label { font-size: 0.75em; font-weight: normal; color: #888; display: block; }
+.recipe-nav .nav-spacer { flex: 1; }
+.recipe-nav .nav-prev { text-align: left; }
+.recipe-nav .nav-next { text-align: right; margin-left: auto; }
 </style>
 </head>
 <body>
@@ -172,5 +203,10 @@ footer {
 <footer>
   <p>Seniors Recipes Wiki · Simple, healthy meals for ages 75+ · High protein · High fibre · Minimal processing</p>
 </footer>
+
+<div class="recipe-nav">
+  <a href="tofu-berry-smoothie-bowl.html" class="nav-prev"><span>&#8592;</span><span><span class="nav-label">Previous in 🌱 Tofu Simplified</span>Tofu & Berry Smoothie Bowl</span></a>
+  <a href="tofu-spinach-scramble.html" class="nav-next"><span><span class="nav-label">Next in 🌱 Tofu Simplified</span>Tofu & Spinach Scramble</span><span>&#8594;</span></a>
+</div>
 </body>
 </html>
