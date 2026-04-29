@@ -85,9 +85,25 @@ footer { background:var(--green); color:#fff; text-align:center; padding:20px; f
 </head>
 <body>
 <header>
-  <h1>🥗 Seniors Recipes</h1>
+  <div style="display:flex;justify-content:center;margin-bottom:18px;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80" role="img" aria-label="SoloNutrition logo">
+      <!-- Background -->
+      <rect width="320" height="80" rx="14" ry="14" fill="#b8622a"/>
+      <!-- White rounded-square icon background -->
+      <rect x="10" y="10" width="60" height="60" rx="12" ry="12" fill="#ffffff"/>
+      <!-- Person icon: solid filled head (disc) -->
+      <circle cx="40" cy="29" r="11" fill="#b8622a"/>
+      <!-- Person icon: shoulders — open arc, stroke only, no fill -->
+      <path d="M19 62 Q40 46 61 62" fill="none" stroke="#b8622a" stroke-width="5" stroke-linecap="round"/>
+      <!-- Text: SoloNutrition -->
+      <text x="82" y="44" font-family="Arial,Helvetica,sans-serif" font-size="26" font-weight="bold" fill="#ffffff" letter-spacing="0">SoloNutrition</text>
+      <!-- Text: tagline -->
+      <text x="82" y="62" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#ffffff" letter-spacing="2" opacity="0.88">EATING WELL, JUST FOR YOU</text>
+    </svg>
+  </div>
+  <h1>Seniors Recipes</h1>
   <p>Simple, healthy one-person meals · High protein · High fibre · Easy to prepare</p>
-  <p style="margin-top:10px; opacity:0.8; font-size:0.9em; font-family:Arial,sans-serif;">Assembled from the Golden Years YouTube Channel <a href="http://www.youtube.com/@goldenyears101" style="color:#fff; text-decoration:underline;" target="_blank">@goldenyears101</a></p>
+  <p style="margin-top:10px; opacity:0.8; font-size:0.9em; font-family:Arial,sans-serif;">Assembled by SoloNutrition from the Golden Years YouTube Channel <a href="http://www.youtube.com/@goldenyears101" style="color:#fff; text-decoration:underline; font-weight:bold;" target="_blank">@goldenyears101</a></p>
 </header>
 <div class="search-bar">
   <input type="search" id="search" placeholder="Search recipes… (e.g. egg, salmon, tofu, no-cook)" autocomplete="off">
